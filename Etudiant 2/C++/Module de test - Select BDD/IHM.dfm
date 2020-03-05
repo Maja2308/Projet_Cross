@@ -14,15 +14,15 @@ object Form1: TForm1
   PixelsPerInch = 96
   TextHeight = 13
   object Resultat: TLabel
-    Left = 184
-    Top = 160
+    Left = 122
+    Top = 187
     Width = 40
     Height = 13
     Caption = 'Resultat'
     Visible = False
   end
   object Nom: TLabel
-    Left = 136
+    Left = 141
     Top = 51
     Width = 21
     Height = 13

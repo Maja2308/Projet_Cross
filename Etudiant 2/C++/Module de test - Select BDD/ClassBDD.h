@@ -2,7 +2,7 @@
 
 #ifndef ClassBDDH
 #define ClassBDDH
-#include "mysql.h"
+#include "include/mysql.h"
 #include <string.h>
 #include <deque>
 #include <vector>
@@ -17,6 +17,7 @@ public :
 
 private :
 	MYSQL *connect;
+	MYSQL * mySql;
 
 };
 

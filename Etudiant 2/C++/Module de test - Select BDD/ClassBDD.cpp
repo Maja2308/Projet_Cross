@@ -22,20 +22,15 @@ ClassBDD::~ClassBDD()
 
 int ClassBDD::connectBDD()
 {
-	connect = mysql_init(NULL);
+	mySql = mysql_init(NULL);
 	//std::stringstream stringbuilder;
 
 	//Options de connexion
-	mysql_options(connect, MYSQL_READ_DEFAULT_GROUP, "option");
+	//mysql_options(connect, MYSQL_READ_DEFAULT_GROUP, "option");
 
 	//Si la connexion réussie...
-	if (mysql_real_connect(connect, "127.0.0.1", "root", "root", "moduleselect", 0, NULL, 0)) //("adresse de la BDD","identifiant BDD","mdp BDD","nom de la base",0,NULL,0)
-	{
-		/*Insertion des variables dans la BDD*/
-
-		//stringbuilder << "INSERT INTO `Bateau` ( `Latitude`,`Longitude`) VALUES (" << latitude << ", " << longitude << ")";
-
-		//mysql_query(connect, stringbuilder.str().c_str());
+	connect = mysql_real_connect(mySql, "127.0.0.1", "root", "root", "moduleselect", 0, NULL, 0); //("adresse de la BDD","identifiant BDD","mdp BDD","nom de la base",0,NULL,0)
+	if (connect == NULL) {
 		return 1;
 	}
 	else
