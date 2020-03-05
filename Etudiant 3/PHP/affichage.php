@@ -11,8 +11,6 @@
  
   $bdd = new PDO ('mysql:host = 192.168.65.217;dbname=Projet_Cross;charset=utf8','root','root');
     
-
-
     ?> 
 
 <div id = 'tab'>
@@ -33,7 +31,7 @@
         echo "</tr>";
     }
 ?>
-</table>
+     </table>
 </div>
-</body>
+    </body>
 </html>
