@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    
+   
     <div class="navbar-wrapper">
         <div class="container-fluid">
             <nav class="navbar navbar-fixed-top">
@@ -21,26 +21,33 @@
                             <fieldset>
                                 <!-- Texte -->
                                 <div class="form-group">
-                                    <label class="control-label" for="nomUtilisateur"><span class="glyphicon glyphicon-user"></span> Nom d'utilisateur</label>  
+                                    <label class="control-label" for="username"><span class="glyphicon glyphicon-user"></span>Nom d'utilisateur</label>  
                                     <div>
-                                        <input id="nomUtilisateur" name="nomUtilisateur" type="text" placeholder="Entrez votre nom d'utilisateur" class="form-control input-md" required="">
+                                        <input id="username" name="username" type="text" placeholder="Entrez votre nom d'utilisateur" class="form-control input-md" required="">
                                     </div>
                                     </div>
-                                    <!-- Mdp -->
-                                    <div class="form-group">
+                                    <!--Mdp -->
+                                  <div class="form-group">
                                     <label class="control-label" for="mdp"><span class="glyphicon glyphicon-lock"></span> Mot de passe</label>
                                     <a class="pull-right">Mot de passe oublié</a>
                                     <div>
-                                        <input id="mdp" name="mdp" type="password" placeholder="Entrez votre mot de passe" class="form-control input-md" required="">
+                                        <input id="password" name="password" type="password" placeholder="Entrez votre mot de passe" class="form-control input-md" required="">
                                     </div>
                                     </div>
-                                    <!-- Bouton -->
-                                    <div class="form-group">
+                                    <!--  Bouton -->
+                                   <div class="form-group">
                                     <label class="control-label" for="btnSigner"></label>
                                     <div>
                                         <input id="btnSigner" type="submit" name="btnSigner" class="btn btn-primary" value='Se connecter'>
-                                        <a href="#" type="submit" name="btnSigner" class="btn btn-primary">Inscription</a>
+                                        <a href="acceuil_inscription.php" type="submit" name="btnSigner" class="btn btn-primary">Inscription</a>
                                     </div>
+                                    <?php
+                                    if(isset($_GET['erreur'])){
+                                        $err = $_GET['erreur'];
+                                        if($err==1 || $err==2)
+                                            echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+                                    }
+                                    ?>
                                 </div>
                             </fieldset>
                         </form>
@@ -50,6 +57,9 @@
             </nav>
         </div>
     </div>
+
+
+
 
 </body>
 

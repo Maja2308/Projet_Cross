@@ -1,101 +1,156 @@
-body, html{
-    padding: 0;
-    margin 0;
+img {width:100%;}
+@media only screen and (max-width: 767px) {
+  #navbarTogglerDemo02 {
+    position: fixed;
+    top: 0;
+    left: 15px;
+    z-index: 99;
+    width: 280px;
+    height: 100%;
+    background-color: #ddd;
+    overflow: auto;
+  }
+  .menu-overlay {
+    display: none;
+    background-color: #000;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    /* IE7 & 8 */
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 49;
+  }
+
 }
 
-a, a:hover{
-    text-decoration:none;
+
+/*
+Fade content bs-carousel with hero headers
+Code snippet by maridlcrmn (Follow me on Twitter @maridlcrmn) for Bootsnipp.com
+Image credits: unsplash.com
+*/
+
+/********************************/
+/*       Fade Bs-carousel       */
+/********************************/
+.fade-carousel {
+    position: relative;
+    height: 100vh;
+}
+.fade-carousel .carousel-inner .item {
+    height: 100vh;
+}
+.fade-carousel .carousel-indicators > li {
+    margin: 0 2px;
+    background-color: #f39c12;
+    border-color: #f39c12;
+    opacity: .7;
+}
+.fade-carousel .carousel-indicators > li.active {
+  width: 10px;
+  height: 10px;
+  opacity: 1;
 }
 
-.container-fluid{
-    padding: 0;
-}
-
-.separator{
-    height: 3px;
-    width: 5%;
-    border:none;
-    box-shadow:none;
-    background-color: #0D4C73;
-}
-
-.separateur{
-    height: 3px;
-    width: 35%;
-    border: none;
-    box-shadow: none;
-    background-color: #0D4C73;
-}
-
-#h3{
+/********************************/
+/*          Hero Headers        */
+/********************************/
+.hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    color: #fff;
     text-align: center;
-    font-weight: bold;
-    margin-top:10%;
-}
-
-/*header*/
-.header{
-    background-color: #0D4C73;
-    height: 90px;
-    line-height: 90px;
-}
-.logo{
-    color: #ffffff;
     text-transform: uppercase;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.75);
+      -webkit-transform: translate3d(-50%,-50%,0);
+         -moz-transform: translate3d(-50%,-50%,0);
+          -ms-transform: translate3d(-50%,-50%,0);
+           -o-transform: translate3d(-50%,-50%,0);
+              transform: translate3d(-50%,-50%,0);
+}
+.hero h1 {
+    font-size: 6em;    
     font-weight: bold;
-    letter-spacing: 1px;
+    margin: 0;
+    padding: 0;
 }
 
-.menu{
-    float: right;
+.fade-carousel .carousel-inner .item .hero {
+    opacity: 0;
+    -webkit-transition: 2s all ease-in-out .1s;
+       -moz-transition: 2s all ease-in-out .1s; 
+        -ms-transition: 2s all ease-in-out .1s; 
+         -o-transition: 2s all ease-in-out .1s; 
+            transition: 2s all ease-in-out .1s; 
+}
+.fade-carousel .carousel-inner .item.active .hero {
+    opacity: 1;
+    -webkit-transition: 2s all ease-in-out .1s;
+       -moz-transition: 2s all ease-in-out .1s; 
+        -ms-transition: 2s all ease-in-out .1s; 
+         -o-transition: 2s all ease-in-out .1s; 
+            transition: 2s all ease-in-out .1s;    
 }
 
-.menu a{
-    color: #ffffff;
-    margin-right: 20px;
+/********************************/
+/*            Overlay           */
+/********************************/
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: #080d15;
+    opacity: .7;
 }
 
-.menu a:hover{
-    color:#08ad9e;
-}
-/* fin header*/
-
-
-/*à propos*/
-.partie{
-    padding:60px 0px;
-}
-
-.dossier-partie{
-    background:#FFF;
-    border-radius:0;
-    padding:100px 10px;
-    margin:30px 0px;
+/********************************/
+/*          Custom Buttons      */
+/********************************/
+.btn.btn-lg {padding: 10px 40px;}
+.btn.btn-hero,
+.btn.btn-hero:hover,
+.btn.btn-hero:focus {
+    color: #f5f5f5;
+    background-color: #1abc9c;
+    border-color: #1abc9c;
+    outline: none;
+    margin: 20px auto;
 }
 
-.titre{
-    margin-top: -20%;
+/********************************/
+/*       Slides backgrounds     */
+/********************************/
+.fade-carousel .slides .slide-1, 
+.fade-carousel .slides .slide-2,
+.fade-carousel .slides .slide-3 {
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
-.texte{
-    margin:40px 0px;
+.fade-carousel .slides .slide-1 {
+  background-image: url(https://ununsplash.imgix.net/photo-1416339134316-0e91dc9ded92?q=75&fm=jpg&s=883a422e10fc4149893984019f63c818); 
+}
+.fade-carousel .slides .slide-2 {
+  background-image: url(https://ununsplash.imgix.net/photo-1416339684178-3a239570f315?q=75&fm=jpg&s=c39d9a3bf66d6566b9608a9f1f3765af);
+}
+.fade-carousel .slides .slide-3 {
+  background-image: url(https://ununsplash.imgix.net/photo-1416339276121-ba1dfa199912?q=75&fm=jpg&s=9bf9f2ef5be5cb5eee5255e7765cb327);
 }
 
-#about{
-    text-align: center;
-    padding-top: 15%;
-    font-weight: bold;
+/********************************/
+/*          Media Queries       */
+/********************************/
+@media screen and (min-width: 980px){
+    .hero { width: 980px; }    
 }
-
-.about article{
-    margin-top: 5%;
-}
-
-.about article h2{
-    text-align: center;
-    color: #000000;
-}
-
-.about article h4:hover{
-    color:#08ad9e;
+@media screen and (max-width: 640px){
+    .hero h1 { font-size: 4em; }    
 }
 
