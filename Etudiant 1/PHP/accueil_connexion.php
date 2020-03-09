@@ -29,7 +29,6 @@
                                     <!--Mdp -->
                                   <div class="form-group">
                                     <label class="control-label" for="mdp"><span class="glyphicon glyphicon-lock"></span> Mot de passe</label>
-                                    <a class="pull-right">Mot de passe oublié</a>
                                     <div>
                                         <input id="password" name="password" type="password" placeholder="Entrez votre mot de passe" class="form-control input-md" required="">
                                     </div>

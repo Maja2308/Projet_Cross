@@ -16,7 +16,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light ">
             <a class="navbar-brand" href="accueil.php">
-                <img src="image/logo_la_providence.jpg" alt="Logo" style="width:150px;">
+                <img src="image/logo_la_providence.jpg" alt="Logo" style="width:250px">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="slide-collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -24,13 +24,16 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">INSCRIPTION A UNE CROUSE</a>
+                    <a class="nav-link" href="inscription_course.php">INSCRIPTION A UNE COURSE</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">MES RESULTATS</a>
+                    <a class="nav-link" href="affichage_course.php">MES COURSES</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">CONTACT</a>
+                    <a class="nav-link" href="creation_course.php">CREATION D'UNE COURSE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://www.la-providence.net/">SITE LA PROVIDENCE</a>
                 </li>
             </ul>
             </div>
@@ -38,47 +41,44 @@
     </div>
     <div class="menu-overlay"></div>
 
-        <section class="bg-success py-5" id="banner">
+        <section class="bg-light py-5" id="banner">
             <div class="container py-5">
                 <div class="row py-5">
-                    <div class="col-md-6  text-white">
-                        <h4><span class="badge badge-warning">#1 DESIGN STUDIO IN EUROPE
-        </span></h4>
-
+                    <div class="col-md-6  text-dark">
+                        <h4><span class="badge badge-info"></span></h4>
                         <h2 class="mt-4">Looking for Premium Services? Discover PixFort Studio.</h2>
-        <button type="button" class="btn btn-warning mt-4">Order Services Today</button>
+        <button type="button" class="btn btn-info mt-4">Order Services Today</button>
 
                     </div>
                 </div>
-            </div>
+    </div>
         </section>
-        <section class="bg-warning py-5" id="services">
+        <section class="bg-info py-5" id="services">
             <div class="container py-5">
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <small>PAGE COURSE</small>
                         <h2>Les courses disponible pour vous inscrire</h2>
                     </div>
                 </div>
                 <div class="row mt-4 text-center">
                     <div class="col-md-3">
-                        <i class="fa fa-tachometer fa-4x text-success"></i>
-                        <h4>Course 1</h4>
+                        <i class="fa fa-tachometer fa-4x text-dark"></i>
+                        <a href="#" class="text-dark"><h4>Course 1</h4></a>
                         <p>20/08/2020</p>
                     </div>
                     <div class="col-md-3">
-                        <i class="fa fa-tachometer fa-4x text-success"></i>
-                        <h4>Course 2</h4>
+                        <i class="fa fa-tachometer fa-4x text-dark"></i>
+                        <a href="#" class="text-dark"><h4>Course 2</h4></a>
                         <p>20/08/2020</p>
                     </div>
                     <div class="col-md-3">
-                        <i class="fa fa-tachometer fa-4x text-success"></i>
-                        <h4>Course 3</h4>
+                        <i class="fa fa-tachometer fa-4x text-dark"></i>
+                        <a href="#" class="text-dark"><h4>Course 3</h4></a>
                         <p>20/08/2020</p>
                     </div>
                     <div class="col-md-3">
-                        <i class="fa fa-tachometer fa-4x text-success"></i>
-                        <h4>Course 4</h4>
+                        <i class="fa fa-tachometer fa-4x text-dark"></i>
+                        <a href="#" class="text-dark"><h4>Course 4</h4></a>
                         <p>20/08/2020</p>
                     </div>
                 </div>
@@ -88,30 +88,24 @@
             <div class="container py-5">
                 <div class="row">
                     <div class="col-md-6">
-                        <i class="fa fa-question fa-4x text-success"></i>
+                        <i class="fa fa-question fa-4x text-info"></i>
                         <h4 class="mt-4">Ask Us a Question</h4>
-                        <p>From logo design to website designs and developers are ready to complete perfect your custom jobs.
-
-        </p>
-        <button type="button" class="btn btn-warning mt-4">Order Services Today</button>
+                        <p>From logo design to website designs and developers are ready to complete perfect your custom jobs.</p>
+                        <button type="button" class="btn btn-info mt-4">Order Services Today</button>
                     </div>
                     <div class="col-md-6">
                         <p class="font-weight-bold">Can I Pay with PayPal?</p>
                         <p>We provides you with a full management functionality that results in faster revenue, more users, and the ability to serve your users better engaging with them efficiently.</p>
                         <p class="font-weight-bold">How about Refund policy?</p>
                         <p>We provides you with a full management functionality that results in faster revenue, more users, and the ability to serve your users better engaging with them efficiently.</p>
-                        <p class="font-weight-bold">Is There a Free Trial?
-        </p>
+                        <p class="font-weight-bold">Is There a Free Trial?</p>
                         <p>We provides you with a full management functionality that results in faster revenue, more users, and the ability to serve your users better engaging with them efficiently.</p>
-                        
-
-
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="bg-success py-5" id="testimonial">
+        <section class="bg-info py-5" id="testimonial">
             <div class="container py-5">
                 <div class="row">
                     <div class="col-md-12 text-center">
@@ -129,7 +123,7 @@
         <div class="container ">
             <div class="row d-flex ">
                 <div class="col-md-2 col-xs-3">
-                <b class="text-success">ABOUT</b>
+                <b class="text-info">INSCRIPTION</b>
                 <div class="mb-2 mt-2 border-top "></div>
                 <ul class="list-unstyled">
                     <li class="mb-2"><a href="#" class="text-secondary">About Us</a></li>
@@ -139,7 +133,7 @@
                 </ul>
                 </div>
                 <div class="col-md-2 col-xs-3">
-                <b class="text-success">POLICY</b>
+                <b class="text-info">POLICY</b>
                 <div class="mb-2 mt-2 border-top "></div>
                 <ul class="list-unstyled">
                     <li class="mb-2"><a href="#" class="text-secondary">Return Policy</a></li>
@@ -150,8 +144,8 @@
                 </ul>
                 </div>
                 <div class="col-md-2 col-xs-3">
-                <b class="text-success">HELP</b>
-                <div class="mb-2 mt-2 border-top "></div>
+                <b class="text-info">HELP</b>
+                <div class="mb-2 mt-2 border-top"></div>
                 <ul class="list-unstyled">
                     <li class="mb-2"><a href="#" class="text-secondary">Payments</a></li>
                     <li class="mb-2"><a href="#" class="text-secondary">Shipping</a></li>
@@ -160,8 +154,8 @@
                 </ul>
                 </div>
                 <div class="col-md-2 col-xs-3 border-right">
-                <b class="text-success">SOCIAL</b>
-                <div class="mb-2 mt-2 border-top "></div>
+                <b class="text-info">SOCIAL</b>
+                <div class="mb-2 mt-2 border-top"></div>
                 <ul class="list-unstyled">
                     <li class="mb-2"><a href="#" class="text-secondary">Facebook</a></li>
                     <li class="mb-2"><a href="#" class="text-secondary">Twitter</a></li>
@@ -170,7 +164,7 @@
                 </ul>
                 </div>
                 <div class="col-md-4 col-xs-3">
-                <b class="text-success">WHO WE ARE</b>
+                <b class="text-info">WHO WE ARE</b>
                 <div class="mb-2 mt-2 border-top "></div>
                 <p class="text-secondary">Your kids deserve ting mother or a new mother, you will find everything you need to set sail on a smooth parenting journey with the help of our baby</p>
                 </div>
@@ -182,8 +176,8 @@
             <div class="row d-flex align-items-center ">
                 <div class="col-md-12 ">
                     <ul class="list-inline ">
-                        <li class="list-inline-item"><small>© 1996-2020, websited.com, Inc. or its affiliates</small></li>
-                        <li class="list-inline-item pull-right"><small>All Rights Reserved</small></li>
+                        <li class="list-inline-item"><small>© 2020, Créé et coder par Matthias JOUEN, Serge LAPRAYE et Victor GOSSELIN</small></li>
+                        <li class="list-inline-item pull-right"><small>Tous les droits sont réservés</small></li>
                     </ul>
                     
                 </div>

@@ -9,12 +9,11 @@
    <body>
 
 <?php
-// Connexion à la base de données 
-        // connexion à la base de données
-        $db_username = 'root';
-        $db_password = 'root';
+        // Connexion à la base de données 
+        $db_username = 'msv';
+        $db_password = 'msv';
         $db_name     = 'Projet_Cross';
-        $db_host     = 'localhost';
+        $db_host     = '192.168.65.79';
         $db = mysqli_connect($db_host, $db_username, $db_password,$db_name)
             or die('could not connect to database');
 
