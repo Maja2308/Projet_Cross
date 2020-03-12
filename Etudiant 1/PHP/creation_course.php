@@ -1,5 +1,6 @@
 <html>
 <head>
+    <meta charset="utf-8">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -13,6 +14,7 @@
 
 <body>
 
+    <!---------------------Menu------------------------->
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light ">
             <a class="navbar-brand" href="accueil.php">
@@ -39,16 +41,18 @@
             </div>
         </nav>
     </div>
+    <!---------------------Fin Menu------------------------->
+
     <br>
     <br>
     <div id="login" class="panel panel-primary container">
-    <div class="panel-heading"><h3 class="panel-title"><strong>Création de la course</strong></h3></div>
+    <div class="panel-heading"><h3 class="panel-title"><strong> Création de la course </strong></h3></div>
     <div class="panel-body">
         <form id="frm-login" class="form-horizontal" action="creation.php" method="POST">
             <fieldset>
                 <!--Nom de la course -->
                 <div class="form-group">
-                    <label class="control-label" for="Nom"><span class="glyphicon glyphicon-user"></span> Nom de la course</label>  
+                    <label class="control-label" for="Nom"><span class="glyphicon glyphicon-user"></span> Nom de la course </label>  
                     <div>
                         <input id="Nom" name="Nom" type="text" placeholder="Entrez le nom de la course" class="form-control input-md">
                     </div>
@@ -64,7 +68,7 @@
 
                 <!--Distance -->
                 <div class="form-group">
-                    <label class="control-label" for="Distance"><span class="glyphicon glyphicon-inbox"></span> Distance </label>
+                    <label class="control-label" for="Distance"><span class="glyphicon glyphicon-inbox"></span> Distance (en km) </label>
                     <div>
                         <input id="Distance" name="Distance" type="number" min="1" max="100000" placeholder="Entrez la distance de tout la course" class="form-control input-md">
                     </div>
@@ -82,7 +86,7 @@
                 <div class="form-group">
                     <label class="control-label" for="Classe"><span class="glyphicon glyphicon-briefcase"></span> Classe autorisées à faire la course </label>
                     <div>
-                        <select id="Classe" type="select" multiple class="form-control input-md" id="exampleFormControlSelect2">
+                        <select id="Classe" name="Classe" type="select" multiple class="form-control input-md" id="exampleFormControlSelect2">
                         <option>SN1</option>
                         <option>SN2</option>
                         <option>E1</option>

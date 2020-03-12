@@ -11,6 +11,7 @@
         $Date = $_POST['Date'];
         $Distance = $_POST['Distance'];
         $NbTours = $_POST['NbTours'];
+        $Classe = $_POST['Classe'];
 
     if ($db) {           
         $sql = "INSERT INTO Course(IdCourse, Nom, Date, Distance, NbTours, TempsDebutCourse, State) VALUES('','$Nom','$Date','$Distance','$NbTours','','')";

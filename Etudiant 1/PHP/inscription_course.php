@@ -1,5 +1,6 @@
 <html>
 <head>
+    <meta charset="utf-8">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -8,7 +9,9 @@
 
 </head>
 <body>
-<div class="container">
+    
+    <!---------------------Menu------------------------->
+    <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light ">
             <a class="navbar-brand" href="accueil.php">
                 <img src="image/logo_la_providence.jpg" alt="Logo" style="width:250px">
@@ -22,7 +25,7 @@
                     <a class="nav-link" href="inscription_course.php">INSCRIPTION A UNE COURSE</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">MES COURSES</a>
+                    <a class="nav-link" href="affichage_course.php">MES COURSES</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="creation_course.php">CREATION D'UNE COURSE</a>
@@ -34,18 +37,20 @@
             </div>
         </nav>
     </div>
+    <!---------------------Fin Menu------------------------->
 
     <br>
     <br>
-    
+
     <?php 
-
+        //Connexion à la base
         $conn = new mysqli('192.168.65.79', 'msv', 'msv', 'Projet_Cross');
         if ($conn->connect_error) {
             die("Connection error: " . $conn->connect_error);
         }
     ?>
 
+    <!--  Tableau affichage de la course -->
     <table class="table table-info">
             
         <th>Course</th>
@@ -57,14 +62,17 @@
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>" .$row['Nom']."</td>" ;
+                    echo "<tr>"; ?>
+                    <a href="<?php echo $row['Nom']; ?>"><?php echo $row['Nom']; ?></a> 
+                    <?php 
+
+                    echo "<td>" .$row['Nom']."</td>";
                     echo "<td>".$row['Date']."</td>";
                     echo "<td>".$row['NbTours']."</td>";
                 
                 }
             }
-        ?>
+                    ?>
 
     </table>
 

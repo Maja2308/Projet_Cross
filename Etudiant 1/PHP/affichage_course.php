@@ -33,7 +33,7 @@
                     <a class="nav-link" href="creation_course.php">CREATION D'UNE COURSE</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="http://www.la-providence.net/">CONTACT</a>
+                    <a class="nav-link" href="http://www.la-providence.net/">SITE LA PROVIDENCE</a>
                 </li>
             </ul>
             </div>

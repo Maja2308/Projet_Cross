@@ -1,5 +1,10 @@
+    <?php
+        session_start();
+    ?>
+
 <html>
 <head>
+    <meta charset="utf-8">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -12,7 +17,37 @@
 </head>
 
 <body>
+    <?php   
+        if (isset($_POST['connexion'])) //Condition pour vérifier les utilisateurs 
+        {
+            include'connexion.php';
+            $user2= new Bdd("","","","");
+            $champLogin=$_POST["username"];
+            $champMdp=$_POST["password"];              
+            $user2->Connexion_BDD("192.168.65.79","Projet_Cross","msv","msv");
+            $_SESSION['user']=$user2->Autorisation("user",$champLogin,$champMdp);
+            $_SESSION['Nom']=$champLogin;
+            $_SESSION['Mdp']=$champMDP;
+        }
+        
+        if (!isset($_SESSION['username']))
+        {
+            header('Location: acceuil_connexion.php');
+            //print("<script type=\"text/javascript\">  setTimeout('location=(\"http://192.168.65.79/accueil_connexion.php\")' ,10); </script>");
+        }
+        
+    if ($_SESSION['user']==true)  //Condition si l'utilisateur est bien connecté 
+        {  
+            
+            if($_SESSION['username'] !== ""){
+                $user = $_SESSION['username'];
+                // affiche un message de bienvenue
+                //echo "<center style='color:black;'>Bonjour $user</center>"; 
+            }
+    ?>
 
+
+    <!---------------------Menu------------------------->
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light ">
             <a class="navbar-brand" href="accueil.php">
@@ -39,6 +74,9 @@
             </div>
         </nav>
     </div>
+    <!--------------------- Fin Menu------------------------->
+
+    <!--------------------- Première partie :   ------------------------->
     <div class="menu-overlay"></div>
 
         <section class="bg-light py-5" id="banner">
@@ -47,12 +85,15 @@
                     <div class="col-md-6  text-dark">
                         <h4><span class="badge badge-info"></span></h4>
                         <h2 class="mt-4">Looking for Premium Services? Discover PixFort Studio.</h2>
-        <button type="button" class="btn btn-info mt-4">Order Services Today</button>
-
+                        <button type="button" class="btn btn-info mt-4">Order Services Today</button>
                     </div>
                 </div>
-    </div>
+            </div>
         </section>
+    <!--------------------- Fin Première partie :   ------------------------->
+
+
+    <!---------------------  Deuxième partie : Affichage des courses disponible ------------------------->
         <section class="bg-info py-5" id="services">
             <div class="container py-5">
                 <div class="row">
@@ -84,6 +125,10 @@
                 </div>
             </div>
         </section>
+        <!--------------------- Fin Deuxième partie : Affichage des courses disponible ------------------------->
+
+
+        <!--------------------- Troisième partie :   ------------------------->
         <section class=" py-5" id="services">
             <div class="container py-5">
                 <div class="row">
@@ -104,7 +149,10 @@
                 </div>
             </div>
         </section>
+        <!--------------------- Fin Troisième partie :   ------------------------->
 
+
+        <!--------------------- Quatrème partie :  ------------------------->
         <section class="bg-info py-5" id="testimonial">
             <div class="container py-5">
                 <div class="row">
@@ -115,10 +163,11 @@
                     </div>
                 </div>
             </div>
-    </div>
-
-
         </section>
+        <!--------------------- Fin Quatrème partie :  ------------------------->
+       
+
+        <!--------------------- Footer  ------------------------->
         <section id="footer" class="pt-5 pb-3 border-bottom">
         <div class="container ">
             <div class="row d-flex ">
@@ -171,20 +220,31 @@
             </div>
         </div>
         </section>
+        <!--------------------- Fin Footer  ------------------------->
+
+
+        <!--------------------- Copyright  ------------------------->
         <section id="copyright" class="pt-3">
         <div class="container">
             <div class="row d-flex align-items-center ">
                 <div class="col-md-12 ">
                     <ul class="list-inline ">
-                        <li class="list-inline-item"><small>© 2020, Créé et coder par Matthias JOUEN, Serge LAPRAYE et Victor GOSSELIN</small></li>
+                        <li class="list-inline-item"><small>© 2020, Créé et codé par des étuidant en BTS SN nommée Matthias JOUEN, Serge LAPRAYE et Victor GOSSELIN</small></li>
                         <li class="list-inline-item pull-right"><small>Tous les droits sont réservés</small></li>
                     </ul>
-                    
                 </div>
             </div>
         </div>
         </section>
+        <!--------------------- Fin Copyright  ------------------------->
 
+        <?php
+        } else 
+            {
+                header('Location: http://192.168.65.79/acceuil_connexion.php');
+                //print("<script type=\"text/javascript\">  setTimeout('location=(\"http://192.168.65.79/acceuil_connexion.php\")' ,10); </script>");
+            }
+        ?>
 
 </body>
 </html>

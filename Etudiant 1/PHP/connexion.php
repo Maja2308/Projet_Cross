@@ -1,47 +1,84 @@
 <?php
+	
+	//classe permettant de se connecter a la bdd
+	//et de pouvoir communiquer en SQL avec elle
+		
+	class Bdd 
+	{
+		//variable pour représentant la bdd 
+		
+		Private $_db = null;
+		//Accesseurs ------------
+        public function getBase()
+        {
+            if(!is_null($this->_db))
+            {			
+				return $this->_db;
+            }else
+            {
+				echo "Base Non accessible";
+				return null;
+			}		
+		}
 
-    session_start();
-    if(isset($_POST['username']) && isset($_POST['password']))
-    {
-        // connexion à la base de données
-        $db_username = 'msv';
-        $db_password = 'msv';
-        $db_name     = 'Projet_Cross';
-        $db_host     = '192.168.65.79';
-        $db = mysqli_connect($db_host, $db_username, $db_password,$db_name)
-            or die('could not connect to database');
-        
-        // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
-        // pour éliminer toute attaque de type injection SQL et XSS
-        $username = mysqli_real_escape_string($db,htmlspecialchars($_POST['username'])); 
-        $password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
-        
-        if($username !== "" && $password !== "")
+		//Constructeur
+		
+			//$ip_bdd="192.168.65.79";        //Adresse IP du server MySQLQ
+			//$name_bdd="Projet_Cross";      //Nom de la base de donnée
+			//$user_bdd="msv";    //User privilégié de la BDD
+			//$mdp_bdd="msv";      //Mdp du User Privilégié
+		
+
+        function Connexion_BDD($ip_bdd,$name_bdd,$user_bdd,$mdp_bdd)
         {
-            $requete = "SELECT count(*) FROM Utilisateur where 
-                Nom = '".$username."' and Mdp = '".$password."' ";
-            $exec_requete = mysqli_query($db,$requete);
-            $reponse      = mysqli_fetch_array($exec_requete);
-            $count = $reponse['count(*)'];
-            if($count!=0) // nom d'utilisateur et mot de passe correctes
+            try
             {
-            $_SESSION['username'] = $username;
-            header('Location: accueil.php');
-            }
-            else
-            {
-            header('Location: accueil_connexion.php?erreur=1'); // utilisateur ou mot de passe incorrect
-            }
-        }
-        else
+				$this->_db = new PDO('mysql:host='.$ip_bdd.';dbname='.$name_bdd.';charset=utf8',$user_bdd,$mdp_bdd);
+			}
+			catch (Exception $e){
+				$this->_db = null;
+	        	echo "<p>".$e->getMessage()."</p>";
+			}
+		}
+
+		//fonction connection a la bdd
+		
+			//$LoginCompare  //login du visiteur
+			//$mdp_bdd      //Mdp du visiteur
+			//$table         //table des users
+			//$champMail    //champ du login
+			//$champMdp      //champ du Mdp
+	
+		
+		// verification de compte sur la bdd retourne true si oui false si non
+        public function Autorisation($table,$champLogin,$champMdp) 
         {
-        header('Location: accueil_connexion?erreur=2'); // utilisateur ou mot de passe vide
+            if(!is_null($this->_db))
+            {
+                $request=$this->_db->query("SELECT username FROM Utilisateur WHERE Nom='$champLogin' AND Mdp='$champMdp'");                    					
+					
+				 if ($request->rowCount()==1)
+			 	 {
+				 	return true;
+			 	 }
+			return false; 
+			}	 
         }
-    }
-    else
-    {
-    header('Location: accueil_connexion.php');
-    }
-    mysqli_close($db); // fermer la connexion
+        
+        public function Admin($table,$champLogin,$champMdp) 
+        {
+            if(!is_null($this->_db))
+            {
+				$request=$this->_db->query("SELECT username FROM Utilisateur WHERE Nom='$champLogin' AND Mdp='$champMdp' and admin =1");                     					
+					
+				 if ($request->rowCount()==1)
+			 	 {
+				 	return true;
+			 	 }
+			return false; 
+			}	 
+        }
+		
+	}
 
 ?>

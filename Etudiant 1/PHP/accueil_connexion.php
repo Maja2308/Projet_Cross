@@ -15,31 +15,25 @@
                 <br>
                 <br>
                 <div id="login" class="panel panel-primary container">
-                <div class="panel-heading"><h3 class="panel-title"><strong> Identification</strong></h3></div>
+                <div class="panel-heading"><h3 class="panel-title"><strong> Identification </strong></h3></div>
                    <div class="panel-body">
-                        <form id="frm-login" class="form-horizontal" action="connexion.php" method="POST">
+                        <form id="frm-login" class="form-horizontal" action="accueil.php" method="POST">
                             <fieldset>
                                 <!-- Texte -->
                                 <div class="form-group">
-                                    <label class="control-label" for="username"><span class="glyphicon glyphicon-user"></span>Nom d'utilisateur</label>  
-                                    <div>
-                                        <input id="username" name="username" type="text" placeholder="Entrez votre nom d'utilisateur" class="form-control input-md" required="">
-                                    </div>
+                                    <label class="control-label" for="Nom"><span class="glyphicon glyphicon-user"></span> Mail La Providence </label>  
+                                        <input id="Nom" name="Nom" type="text" placeholder="Entrez votre nom d'utilisateur" class="form-control input-md" required="">
                                     </div>
                                     <!--Mdp -->
                                   <div class="form-group">
-                                    <label class="control-label" for="mdp"><span class="glyphicon glyphicon-lock"></span> Mot de passe</label>
-                                    <div>
-                                        <input id="password" name="password" type="password" placeholder="Entrez votre mot de passe" class="form-control input-md" required="">
-                                    </div>
+                                    <label class="control-label" for="Mdp"><span class="glyphicon glyphicon-lock"></span> Mot de passe </label>
+                                        <input id="Mdp" name="Mdp" type="password" placeholder="Entrez votre mot de passe" class="form-control input-md" required="">
                                     </div>
                                     <!--  Bouton -->
                                    <div class="form-group">
                                     <label class="control-label" for="btnSigner"></label>
-                                    <div>
                                         <input id="btnSigner" type="submit" name="btnSigner" class="btn btn-primary" value='Se connecter'>
                                         <a href="acceuil_inscription.php" type="submit" name="btnSigner" class="btn btn-primary">Inscription</a>
-                                    </div>
                                     <?php
                                     if(isset($_GET['erreur'])){
                                         $err = $_GET['erreur'];
