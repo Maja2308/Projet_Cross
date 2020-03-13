@@ -1,0 +1,38 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "ClassBDD.h"
+#include <windows.h>
+#include <tchar.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+#define HOST "192.168.65.79"
+#define USER "msv"
+#define PASSWORD "msv"
+#define DATABASE "Projet_Cross"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+
+ClassBDD::ClassBDD(TMemo *Memo1)
+{
+}
+ClassBDD::~ClassBDD()
+{
+  //destructeur
+}
+
+int ClassBDD::connectBDD()
+{
+
+}
+
+void ClassBDD::closeBDD()
+{
+}
+
+void ClassBDD::selectCourse()
+{
+}

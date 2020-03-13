@@ -1,0 +1,65 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 300
+  ClientWidth = 635
+  Color = cl3DLight
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Resultat: TLabel
+    Left = 146
+    Top = 131
+    Width = 40
+    Height = 13
+    Caption = 'Resultat'
+    Visible = False
+  end
+  object BDDPanel: TLabel
+    Left = 39
+    Top = 14
+    Width = 20
+    Height = 13
+    Caption = 'BDD'
+    Color = clRed
+    ParentColor = False
+  end
+  object Memo1: TMemo
+    Left = 192
+    Top = 128
+    Width = 185
+    Height = 89
+    TabOrder = 0
+  end
+  object Panel: TPanel
+    Left = 8
+    Top = 8
+    Width = 25
+    Height = 25
+    Color = clRed
+    ParentBackground = False
+    TabOrder = 1
+  end
+  object select: TButton
+    Left = 192
+    Top = 97
+    Width = 97
+    Height = 25
+    Caption = 'Selection Course'
+    TabOrder = 2
+    OnClick = SelectClick
+  end
+  object TimerSelect: TTimer
+    Enabled = False
+    Interval = 5000
+    OnTimer = TimerSelectTimer
+    Left = 592
+    Top = 16
+  end
+end

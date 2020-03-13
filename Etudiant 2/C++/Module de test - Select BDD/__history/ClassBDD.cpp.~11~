@@ -1,0 +1,83 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "ClassBDD.h"
+#include <windows.h>
+#include <stdlib.h>
+#include <tchar.h>
+#include <string.h>
+#include <stdio.h>
+#define HOST "192.168.65.79"
+#define USER "msv"
+#define PASSWORD "msv"
+#define DATABASE "Projet_Cross"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+
+ClassBDD::ClassBDD()
+{
+  //constructeur
+}
+ClassBDD::~ClassBDD()
+{
+  //destructeur
+}
+
+int ClassBDD::connectBDD()
+{
+	mySql = mysql_init(NULL);
+	//std::stringstream stringbuilder;
+
+	//Options de connexion
+	//mysql_options(connect, MYSQL_READ_DEFAULT_GROUP, "option");
+
+	//Si la connexion réussie...
+	connect = mysql_real_connect(mySql, "HOST", "USER", "PASSWORD", "DATABASE", 0, NULL, 0); //("adresse de la BDD","identifiant BDD","mdp BDD","nom de la base",0,NULL,0)
+	if (connect == NULL) {
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
+}
+
+void ClassBDD::closeBDD()
+{
+	//Fermeture de MySQL
+	mysql_close(connect);
+}
+
+char ClassBDD::selectCourse()
+{
+	char * sql;
+	sql = "SELECT `IdCourse` AND `Nom` FROM Course";
+	mysql_query(mySql, "SELECT * FROM Course;");
+		unsigned int i = 0;
+		unsigned int num_champs = 0;
+
+	//On met le jeu de résultat dans le pointeur result
+	result = mysql_use_result(mySql);
+
+	//On récupère le nombre de champs
+	num_champs = mysql_num_fields(result);
+
+	//Tant qu'il y a encore un résultat ...
+	while ((row = mysql_fetch_row(result)))
+	{
+		//On déclare un pointeur long non signé pour y stocker la taille des valeurs
+		unsigned long *lengths;
+
+		//On stocke ces tailles dans le pointeur
+		lengths = mysql_fetch_lengths(result);
+
+		//On fait une boucle pour avoir la valeur de chaque champs
+		for (i = 0; i < num_champs; i++)
+		{
+			//On ecrit toutes les valeurs
+			printf("[%.*s] ", (int)lengths[i], row[i] ? row[i] : "NULL");
+		}
+		printf("\n");
+	}
+}

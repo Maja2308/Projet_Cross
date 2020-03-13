@@ -14,26 +14,11 @@ object Form1: TForm1
   PixelsPerInch = 96
   TextHeight = 13
   object Resultat: TLabel
-    Left = 122
-    Top = 187
-    Width = 40
+    Left = 258
+    Top = 45
+    Width = 82
     Height = 13
-    Caption = 'Resultat'
-    Visible = False
-  end
-  object Nom: TLabel
-    Left = 141
-    Top = 51
-    Width = 21
-    Height = 13
-    Caption = 'Nom'
-  end
-  object Prenom: TLabel
-    Left = 126
-    Top = 78
-    Width = 36
-    Height = 13
-    Caption = 'Prenom'
+    Caption = 'Liste des courses'
   end
   object BDDPanel: TLabel
     Left = 39
@@ -44,37 +29,6 @@ object Form1: TForm1
     Color = clRed
     ParentColor = False
   end
-  object Memo1: TMemo
-    Left = 184
-    Top = 184
-    Width = 185
-    Height = 89
-    TabOrder = 0
-    Visible = False
-  end
-  object EditNom: TEdit
-    Left = 184
-    Top = 48
-    Width = 121
-    Height = 21
-    TabOrder = 1
-  end
-  object EditPrenom: TEdit
-    Left = 184
-    Top = 75
-    Width = 121
-    Height = 21
-    TabOrder = 2
-  end
-  object Valider: TButton
-    Left = 184
-    Top = 112
-    Width = 75
-    Height = 25
-    Caption = 'Valider'
-    TabOrder = 3
-    OnClick = ValiderClick
-  end
   object Panel: TPanel
     Left = 8
     Top = 8
@@ -82,6 +36,32 @@ object Form1: TForm1
     Height = 25
     Color = clRed
     ParentBackground = False
-    TabOrder = 4
+    TabOrder = 0
+  end
+  object ListBox1: TListBox
+    Left = 258
+    Top = 64
+    Width = 121
+    Height = 73
+    ItemHeight = 13
+    TabOrder = 1
+  end
+  object ValiderCourse: TButton
+    Left = 258
+    Top = 143
+    Width = 121
+    Height = 25
+    Caption = 'Valider ce choix'
+    TabOrder = 2
+    OnClick = ValiderCourseClick
+  end
+  object Memo1: TMemo
+    Left = 556
+    Top = 203
+    Width = 71
+    Height = 89
+    Lines.Strings = (
+      '')
+    TabOrder = 3
   end
 end

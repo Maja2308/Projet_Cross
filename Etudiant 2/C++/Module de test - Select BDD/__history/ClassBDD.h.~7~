@@ -1,0 +1,31 @@
+//---------------------------------------------------------------------------
+
+#ifndef ClassBDDH
+#define ClassBDDH
+#include "include/mysql.h"
+#include <string.h>
+#include <deque>
+#include <vector>
+//---------------------------------------------------------------------------
+class ClassBDD
+{
+public :
+	ClassBDD();
+	~ClassBDD();
+	int connectBDD();
+	void closeBDD();
+	char selectCourse();
+
+private :
+	MYSQL *connect;
+	MYSQL * mySql;
+	MYSQL_RES *result = NULL;
+	MYSQL_ROW row;
+
+int query_state;
+
+
+};
+
+
+#endif

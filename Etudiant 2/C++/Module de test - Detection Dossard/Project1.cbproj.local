@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/03/04 10:25:20.000.959,=C:\Users\Matthias Jouen\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
+    <Transaction>2020/03/04 10:25:20.000.974,=C:\Users\Matthias Jouen\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2020/03/11 11:01:36.000.729,=C:\Users\Matthias Jouen\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
+    <Transaction>2020/03/11 11:01:36.000.742,=C:\Users\Matthias Jouen\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2020/03/11 11:02:02.000.253,C:\Users\Matthias Jouen\Documents\Embarcadero\Studio\Projets\Unit1.dfm=E:\GitHub\Projet_Cross\Etudiant 2\C++\Module de test - Detection Dossard\detectDossard.dfm</Transaction>
+    <Transaction>2020/03/11 11:02:02.000.253,C:\Users\Matthias Jouen\Documents\Embarcadero\Studio\Projets\Unit1.cpp=E:\GitHub\Projet_Cross\Etudiant 2\C++\Module de test - Detection Dossard\detectDossard.cpp</Transaction>
+    <Transaction>2020/03/11 11:02:02.000.253,C:\Users\Matthias Jouen\Documents\Embarcadero\Studio\Projets\Unit1.h=E:\GitHub\Projet_Cross\Etudiant 2\C++\Module de test - Detection Dossard\detectDossard.h</Transaction>
+    <Transaction>2020/03/11 11:02:03.000.666,C:\Users\Matthias Jouen\Documents\Embarcadero\Studio\Projets\Project1PCH1.h=E:\GitHub\Projet_Cross\Etudiant 2\C++\Module de test - Detection Dossard\Project1PCH1.h</Transaction>
+    <Transaction>2020/03/11 11:02:06.000.190,C:\Users\Matthias Jouen\Documents\Embarcadero\Studio\Projets\Project1.cbproj=E:\GitHub\Projet_Cross\Etudiant 2\C++\Module de test - Detection Dossard\Project1.cbproj</Transaction>
+  </Transactions>
+</BorlandProject>

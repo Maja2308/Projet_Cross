@@ -1,0 +1,64 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "IHM.h"
+#include <string.h>
+#include <deque>
+#include <vector>
+#include <sstream>
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+#define HOST "192.168.65.79"
+#define USER "msv"
+#define PASSWORD "msv"
+#define DATABASE "Projet_Cross"
+TForm1 *Form1;
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+
+//---------------------------------------------------------------------------
+void __fastcall TForm1::selectClick(TObject *Sender)
+{
+	MYSQL *conn;
+	MYSQL_RES *myRES;
+	MYSQL_ROW myROW;
+	mySQL = mysql_init(NULL);
+	AnsiString aStr ;
+
+	conn=mysql_real_connect(mySQL, HOST, USER, PASSWORD, DATABASE, 0, NULL, 0);
+	std::stringstream stringbuilder;
+	if(conn==NULL)
+	{
+	}
+	else
+	{
+		Panel->Color = clLime;
+		AnsiString select = "SELECT `IdCourse`, `Nom` FROM `Course`";
+		//Memo1->Lines->Add(test);
+
+	if (!mysql_query(mySQL, select.c_str()))
+	{
+		myRES = mysql_store_result(mySQL);
+		if (myRES)
+		{
+			for(unsigned int i = 0; i < myRES->row_count; i++)
+			{
+				myROW = mysql_fetch_row(myRES);
+				for(unsigned int j = 0; j < mysql_num_fields(myRES); j++)
+				{
+					aStr = myROW[j];
+					ListBox1->Items->Add(aStr);
+				}
+			}
+			mysql_free_result(myRES);
+		}
+	}
+	}
+}
+//---------------------------------------------------------------------------
