@@ -1,0 +1,23 @@
+//---------------------------------------------------------------------------
+
+#ifndef ClassBDDH
+#define ClassBDDH
+#include "mysql.h"
+#include <string.h>
+#include <deque>
+#include <vector>
+//---------------------------------------------------------------------------
+class ClassBDD
+{
+private :
+	ClassBDD();
+	~ClassBDD();
+	int connectBDD();
+	void closeBDD();
+public :
+	MYSQL *connect;
+
+};
+
+
+#endif

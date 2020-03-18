@@ -1,0 +1,41 @@
+//---------------------------------------------------------------------------
+
+#ifndef IHMH
+#define IHMH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include "ClassBDD.h"
+#include <Vcl.ExtCtrls.hpp>
+#include <Windows.h>
+#include <deque>
+#include <vector>
+//---------------------------------------------------------------------------
+class TForm1 : public TForm
+{
+__published:	// Composants gérés par l'EDI
+	TMemo *Memo1;
+	TEdit *EditNom;
+	TEdit *EditPrenom;
+	TLabel *Resultat;
+	TLabel *Nom;
+	TLabel *Prenom;
+	TButton *Valider;
+	TPanel *Panel;
+	TLabel *BDDPanel;
+	TButton *Select;
+	TTimer *Timer1;
+	void __fastcall ValiderClick(TObject *Sender);
+	void __fastcall SelectClick(TObject *Sender);
+	void __fastcall Timer1Timer(TObject *Sender);
+private:	// Déclarations utilisateur
+	MYSQL * mySQL;
+public:		// Déclarations utilisateur
+	__fastcall TForm1(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForm1 *Form1;
+//---------------------------------------------------------------------------
+#endif
