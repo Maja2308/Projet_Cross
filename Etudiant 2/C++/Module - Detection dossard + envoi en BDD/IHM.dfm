@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Form1'
-  ClientHeight = 562
+  ClientHeight = 461
   ClientWidth = 1020
   Color = cl3DLight
   Font.Charset = DEFAULT_CHARSET
@@ -61,6 +61,19 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
   end
+  object LabelAssocier: TLabel
+    Left = 312
+    Top = 384
+    Width = 373
+    Height = 18
+    Caption = 'Choisir un participant et un dossard et cliquer sur associer'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
   object Panel: TPanel
     Left = 8
     Top = 8
@@ -70,10 +83,10 @@ object Form1: TForm1
     ParentBackground = False
     TabOrder = 0
   end
-  object ListBox1: TListBox
+  object ListBoxNomCourse: TListBox
     Left = 8
     Top = 67
-    Width = 153
+    Width = 129
     Height = 102
     ItemHeight = 13
     TabOrder = 1
@@ -81,16 +94,16 @@ object Form1: TForm1
   object ValiderCourse: TButton
     Left = 8
     Top = 175
-    Width = 153
+    Width = 129
     Height = 25
     Caption = 'Valider ce choix'
     TabOrder = 2
     OnClick = ValiderCourseClick
   end
-  object Memo1: TMemo
+  object MemoCourseChoisie: TMemo
     Left = 8
     Top = 246
-    Width = 153
+    Width = 129
     Height = 51
     TabOrder = 3
   end
@@ -109,13 +122,37 @@ object Form1: TForm1
     Height = 73
     TabOrder = 5
   end
-  object ListBox3: TListBox
-    Left = 800
-    Top = 272
-    Width = 129
-    Height = 185
+  object ListBoxDossard: TListBox
+    Left = 888
+    Top = 236
+    Width = 124
+    Height = 37
     ItemHeight = 13
     TabOrder = 6
+  end
+  object NouveauDossard: TButton
+    Left = 888
+    Top = 205
+    Width = 124
+    Height = 25
+    Caption = 'Nouveau Dossard'
+    TabOrder = 7
+    OnClick = NouveauDossardClick
+  end
+  object Button1: TButton
+    Left = 440
+    Top = 408
+    Width = 121
+    Height = 45
+    Caption = 'Association'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 8
+    OnClick = Button1Click
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer

@@ -14,6 +14,9 @@
 #include <vector>
 #include <iostream>
 #include <ctime>
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -21,17 +24,22 @@ __published:	// Composants gérés par l'EDI
 	TLabel *Resultat;
 	TPanel *Panel;
 	TLabel *BDDPanel;
-	TListBox *ListBox1;
+	TListBox *ListBoxNomCourse;
 	TButton *ValiderCourse;
-	TMemo *Memo1;
+	TMemo *MemoCourseChoisie;
 	TLabel *Label1;
 	TListBox *ListBoxNom;
 	TMemo *Memo2;
 	TTimer *Timer1;
-	TListBox *ListBox3;
+	TListBox *ListBoxDossard;
 	TLabel *Label2;
+	TButton *NouveauDossard;
+	TLabel *LabelAssocier;
+	TButton *Button1;
 	void __fastcall ValiderCourseClick(TObject *Sender);
 	void __fastcall Timer1Timer(TObject *Sender);
+	void __fastcall NouveauDossardClick(TObject *Sender);
+	void __fastcall Button1Click(TObject *Sender);
 private:	// Déclarations utilisateur
 	MYSQL * mySQL;
 	MYSQL *conn;

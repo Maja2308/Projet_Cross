@@ -25,6 +25,16 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 	conn=mysql_real_connect(mySQL, HOST, USER, PASSWORD, DATABASE, 0, NULL, 0);
 	if(conn==NULL)
 	{
+		//on rend tout invisible
+		ListBoxNomCourse->Visible= false;
+		MemoCourseChoisie->Visible= false;
+		ListBoxNom->Visible=false;
+		Label1->Visible=false;
+		Label2->Visible=false;
+		Resultat->Visible=false;
+		ListBoxDossard->Visible=false;
+		ValiderCourse->Visible=false;
+        NouveauDossard->Visible=false;
 	}
 	else
 	{
@@ -42,7 +52,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 				for(unsigned int j = 0; j < mysql_num_fields(myRES); j++)
 				{
 					NomCourse = myROW[j];
-					ListBox1->Items->Add(NomCourse);
+					ListBoxNomCourse->Items->Add(NomCourse);
 				}
 			}
 			mysql_free_result(myRES);
@@ -56,8 +66,9 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 void __fastcall TForm1::ValiderCourseClick(TObject *Sender)
 {
-	String nomCourseChoisie = ListBox1->Items->Strings[ListBox1->ItemIndex];//on recupere le nom de la course choisie
-	Memo1->Lines->Add(nomCourseChoisie);//affichage de la course choisie
+	ListBoxNom->Clear();
+	String nomCourseChoisie = ListBoxNomCourse->Items->Strings[ListBoxNomCourse->ItemIndex];//on recupere le nom de la course choisie
+	MemoCourseChoisie->Lines->Add(nomCourseChoisie);//affichage de la course choisie
 	//on selectionne l'id cours een fonction de son nom.
 	AnsiString selectIdCourseChoisie = "SELECT `IdCourse` FROM `Course` WHERE `Nom` = '"+nomCourseChoisie+"'";
 
@@ -73,7 +84,7 @@ void __fastcall TForm1::ValiderCourseClick(TObject *Sender)
 				for(unsigned int j = 0; j < mysql_num_fields(myRES); j++)
 				{
 					IdCourseChoisie = myROW[j];
-					Memo1->Lines->Add(IdCourseChoisie);//affiche l'id course dans le memo
+					MemoCourseChoisie->Lines->Add(IdCourseChoisie);//affiche l'id course dans le memo
 				}
 			}
 			mysql_free_result(myRES);
@@ -106,7 +117,6 @@ void __fastcall TForm1::ValiderCourseClick(TObject *Sender)
 //---------------------------------------------------------------------------
 
 
-
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
 	time_t curr_time;
@@ -117,6 +127,45 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 	Memo2->Lines->Add(tm_local->tm_hour);
 	Memo2->Lines->Add(tm_local->tm_min);
 	Memo2->Lines->Add(tm_local->tm_sec);
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::NouveauDossardClick(TObject *Sender)
+{
+	int numDossard = 0;
+	srand(time(NULL)); // initialisation de rand
+	numDossard = rand()%(2000000-1000000) + 1000000;
+	ListBoxDossard->Clear();
+	ListBoxDossard->Items->Add(numDossard);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button1Click(TObject *Sender)
+{
+	String ParticipantChoisi = ListBoxNom->Items->Strings[ListBoxNom->ItemIndex];
+	String NumDossard = ListBoxDossard->Items->Strings[ListBoxDossard->ItemIndex];
+	AnsiString selectIdParticipant = "SELECT `IdUtilisateur` FROM `Utilisateur` WHERE `Nom` = '"+ParticipantChoisi+"'";
+	AnsiString IdParticipantChoisi;
+	if (!mysql_query(mySQL, selectIdParticipant.c_str()))
+	{
+		myRES = mysql_store_result(mySQL);
+		if (myRES)//si il y a un resultat
+		{
+			for(unsigned int i = 0; i < myRES->row_count; i++)//compte le nb de resultat
+			{
+				myROW = mysql_fetch_row(myRES);//les lignes
+				for(unsigned int j = 0; j < mysql_num_fields(myRES); j++)
+				{
+					IdParticipantChoisi = myROW[j];
+				}
+			}
+			mysql_free_result(myRES);
+		}
+	}
+	AnsiString updateNumDossard = "UPDATE `Participant` SET `IdDossard`= '"+NumDossard+"' WHERE `IdUtilisateur`= '"+IdParticipantChoisi+"'";
+	mysql_query(mySQL, updateNumDossard.c_str());
+
 }
 //---------------------------------------------------------------------------
 
