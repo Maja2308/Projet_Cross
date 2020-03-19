@@ -41,8 +41,8 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 				myROW = mysql_fetch_row(myRES);
 				for(unsigned int j = 0; j < mysql_num_fields(myRES); j++)
 				{
-					aStr = myROW[j];
-					ListBox1->Items->Add(aStr);
+					NomCourse = myROW[j];
+					ListBox1->Items->Add(NomCourse);
 				}
 			}
 			mysql_free_result(myRES);
@@ -72,45 +72,51 @@ void __fastcall TForm1::ValiderCourseClick(TObject *Sender)
 				myROW = mysql_fetch_row(myRES);//les lignes
 				for(unsigned int j = 0; j < mysql_num_fields(myRES); j++)
 				{
-					aStr = myROW[j];
-					Memo1->Lines->Add(aStr);
+					IdCourseChoisie = myROW[j];
+					Memo1->Lines->Add(IdCourseChoisie);//affiche l'id course dans le memo
 				}
 			}
 			mysql_free_result(myRES);
 		}
 	}
-		AnsiString DeleteCourseActuelle = "DELETE FROM `CourseActuelle`";
-		AnsiString insertCourseActuelle = "INSERT INTO `CourseActuelle`(`IdCourse`) VALUES ('"+aStr+"')";
-		mysql_query(mySQL, DeleteCourseActuelle.c_str());
-		mysql_query(mySQL, insertCourseActuelle.c_str());
+	AnsiString DeleteCourseActuelle = "DELETE FROM `CourseActuelle`";
+	AnsiString insertCourseActuelle = "INSERT INTO `CourseActuelle`(`IdCourse`) VALUES ('"+IdCourseChoisie+"')";
+	AnsiString selectNomUtilisateur = "SELECT `Nom` FROM `Utilisateur`, `Participant`,`CourseActuelle` WHERE '"+IdCourseChoisie+"' = Participant.IdCourse AND Participant.IdUtilisateur = Utilisateur.IdUtilisateur";
+	mysql_query(mySQL, DeleteCourseActuelle.c_str());
+	mysql_query(mySQL, insertCourseActuelle.c_str());
 
-//	if (!mysql_query(mySQL, selectIdCourseChoisie.c_str()))
-//	{
-//		myRES = mysql_store_result(mySQL);
-//		if (myRES)//si il y a un resultat
-//		{
-//			for(unsigned int i = 0; i < myRES->row_count; i++)//compte le nb de resultat
-//			{
-//				myROW = mysql_fetch_row(myRES);//les lignes
-//				for(unsigned int j = 0; j < mysql_num_fields(myRES); j++)
-//				{
-//					aStr = myROW[j];
-//					Memo1->Lines->Add(aStr);
-//				}
-//			}
-//			mysql_free_result(myRES);
-//		}
-//	}
+	if (!mysql_query(mySQL, selectNomUtilisateur.c_str()))
+	{
+		myRES = mysql_store_result(mySQL);
+		if (myRES)//si il y a un resultat
+		{
+			for(unsigned int i = 0; i < myRES->row_count; i++)//compte le nb de resultat
+			{
+				myROW = mysql_fetch_row(myRES);//les lignes
+				for(unsigned int j = 0; j < mysql_num_fields(myRES); j++)
+				{
+					NomParticipantsCourse = myROW[j];
+					ListBoxNom->Items->Add(NomParticipantsCourse);
+				}
+			}
+			mysql_free_result(myRES);
+		}
 	}
+}
 //---------------------------------------------------------------------------
 
 
-void __fastcall TForm1::insertClick(TObject *Sender)
+
+void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
-//	AnsiString DeleteCourseActuelle = "DELETE FROM `CourseActuelle`";
-//	AnsiString insertCourseActuelle = "INSERT INTO `CourseActuelle`(`IdCourse`) VALUES (14)";
-//	mysql_query(mySQL, DeleteCourseActuelle.c_str());
-//	mysql_query(mySQL, insertCourseActuelle.c_str());
+	time_t curr_time;
+	curr_time = time(NULL);
+	tm *tm_local = localtime(&curr_time);
+
+	Memo2->Lines->Add("Heure locale :");
+	Memo2->Lines->Add(tm_local->tm_hour);
+	Memo2->Lines->Add(tm_local->tm_min);
+	Memo2->Lines->Add(tm_local->tm_sec);
 }
 //---------------------------------------------------------------------------
 

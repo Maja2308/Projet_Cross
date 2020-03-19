@@ -15,10 +15,16 @@ object Form1: TForm1
   TextHeight = 13
   object Resultat: TLabel
     Left = 8
-    Top = 72
-    Width = 82
-    Height = 13
+    Top = 48
+    Width = 98
+    Height = 16
     Caption = 'Liste des courses'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
   end
   object BDDPanel: TLabel
     Left = 39
@@ -31,10 +37,29 @@ object Form1: TForm1
   end
   object Label1: TLabel
     Left = 8
-    Top = 291
-    Width = 69
-    Height = 13
+    Top = 227
+    Width = 83
+    Height = 16
     Caption = 'Course choisie'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 344
+    Top = 48
+    Width = 120
+    Height = 16
+    Caption = 'Nom des participants'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
   end
   object Panel: TPanel
     Left = 8
@@ -47,7 +72,7 @@ object Form1: TForm1
   end
   object ListBox1: TListBox
     Left = 8
-    Top = 91
+    Top = 67
     Width = 153
     Height = 102
     ItemHeight = 13
@@ -55,7 +80,7 @@ object Form1: TForm1
   end
   object ValiderCourse: TButton
     Left = 8
-    Top = 199
+    Top = 175
     Width = 153
     Height = 25
     Caption = 'Valider ce choix'
@@ -64,26 +89,37 @@ object Form1: TForm1
   end
   object Memo1: TMemo
     Left = 8
-    Top = 310
-    Width = 129
+    Top = 246
+    Width = 153
     Height = 51
     TabOrder = 3
   end
-  object ListBox2: TListBox
-    Left = 424
-    Top = 91
-    Width = 161
+  object ListBoxNom: TListBox
+    Left = 344
+    Top = 70
+    Width = 129
     Height = 130
     ItemHeight = 13
     TabOrder = 4
   end
-  object insert: TButton
-    Left = 424
-    Top = 239
-    Width = 129
-    Height = 25
-    Caption = 'Insert Course Actuelle'
+  object Memo2: TMemo
+    Left = 907
+    Top = 8
+    Width = 105
+    Height = 73
     TabOrder = 5
-    OnClick = insertClick
+  end
+  object ListBox3: TListBox
+    Left = 800
+    Top = 272
+    Width = 129
+    Height = 185
+    ItemHeight = 13
+    TabOrder = 6
+  end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    Left = 872
+    Top = 8
   end
 end
