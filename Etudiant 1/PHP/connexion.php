@@ -55,7 +55,7 @@
         {
             if(!is_null($this->_db))
             {
-                $request=$this->_db->query("SELECT username FROM Utilisateur WHERE Nom='$champLogin' AND Mdp='$champMdp'");                    					
+                $request=$this->_db->query("SELECT * FROM Utilisateur WHERE Nom='$champLogin' AND Mdp='$champMdp'");                    					
 					
 				 if ($request->rowCount()==1)
 			 	 {

@@ -44,7 +44,7 @@
 
     <?php 
         //Connexion à la base
-        $conn = new mysqli('192.168.65.79', 'msv', 'msv', 'Projet_Cross');
+        $conn = new mysqli('localhost', 'root', 'root', 'Projet_Cross');
         if ($conn->connect_error) {
             die("Connection error: " . $conn->connect_error);
         }

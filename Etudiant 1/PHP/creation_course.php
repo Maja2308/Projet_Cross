@@ -83,7 +83,7 @@
                 </div>
 
                 <!-- Classe autoriter -->
-                <div class="form-group">
+               <!-- <div class="form-group">
                     <label class="control-label" for="Classe"><span class="glyphicon glyphicon-briefcase"></span> Classe autorisées à faire la course </label>
                     <div>
                         <select id="Classe" name="Classe" type="select" multiple class="form-control input-md" id="exampleFormControlSelect2">
@@ -93,7 +93,7 @@
                         <option>E2</option>
                         </select>
                     </div>
-                </div>
+                </div> -->
 
                 <!--Bouton -->
                 <div class="form-group">
