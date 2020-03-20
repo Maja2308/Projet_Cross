@@ -21,13 +21,13 @@
                             <fieldset>
                                 <!-- Texte -->
                                 <div class="form-group">
-                                    <label class="control-label" for="Nom"><span class="glyphicon glyphicon-user"></span> Mail La Providence </label>  
-                                        <input id="Nom" name="Nom" type="text" placeholder="Entrez votre nom d'utilisateur" class="form-control input-md" required="">
+                                    <label class="control-label" for="username"><span class="glyphicon glyphicon-user"></span> Nom </label>  
+                                        <input id="username" name="username" type="text" placeholder="Entrez votre nom d'utilisateur" class="form-control input-md" required="">
                                     </div>
                                     <!--Mdp -->
                                   <div class="form-group">
-                                    <label class="control-label" for="Mdp"><span class="glyphicon glyphicon-lock"></span> Mot de passe </label>
-                                        <input id="Mdp" name="Mdp" type="password" placeholder="Entrez votre mot de passe" class="form-control input-md" required="">
+                                    <label class="control-label" for="password"><span class="glyphicon glyphicon-lock"></span> Mot de passe </label>
+                                        <input id="password" name="password" type="password" placeholder="Entrez votre mot de passe" class="form-control input-md" required="">
                                     </div>
                                     <!--  Bouton -->
                                    <div class="form-group">
@@ -51,9 +51,5 @@
         </div>
     </div>
 
-
-
-
 </body>
-
 </html>

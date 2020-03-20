@@ -9,11 +9,12 @@
    <body>
 
 <?php
+
         // Connexion à la base de données 
-        $db_username = 'msv';
-        $db_password = 'msv';
+        $db_username = 'root';
+        $db_password = 'root';
         $db_name     = 'Projet_Cross';
-        $db_host     = '192.168.65.79';
+        $db_host     = 'localhost';
         $db = mysqli_connect($db_host, $db_username, $db_password,$db_name)
             or die('could not connect to database');
 
@@ -33,7 +34,7 @@
         } 
         else { 
             echo "Personne enregistrée.<br />"; 
-            //header('Location: accueil_connexion.php');
+            header('Location: accueil_connexion.php');
         } 
 
     } 
@@ -43,7 +44,6 @@
 
 ?>
 
-<a href="accueil_connexion.php"> Connexion </a>
 
 
 

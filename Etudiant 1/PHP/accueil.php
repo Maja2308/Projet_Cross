@@ -24,15 +24,15 @@
             $user2= new Bdd("","","","");
             $champLogin=$_POST["username"];
             $champMdp=$_POST["password"];              
-            $user2->Connexion_BDD("192.168.65.79","Projet_Cross","msv","msv");
+            $user2->Connexion_BDD("localhost","Projet_Cross","root","root");
             $_SESSION['user']=$user2->Autorisation("user",$champLogin,$champMdp);
-            $_SESSION['Nom']=$champLogin;
-            $_SESSION['Mdp']=$champMDP;
+            $_SESSION['username']=$champLogin;
+            $_SESSION['password']=$champMDP;
         }
         
         if (!isset($_SESSION['username']))
         {
-            header('Location: acceuil_connexion.php');
+            header('Location: http://127.0.0.1/Projet_Cross/accueil.php');
             //print("<script type=\"text/javascript\">  setTimeout('location=(\"http://192.168.65.79/accueil_connexion.php\")' ,10); </script>");
         }
         
@@ -241,8 +241,8 @@
         <?php
         } else 
             {
-                header('Location: http://192.168.65.79/acceuil_connexion.php');
-                //print("<script type=\"text/javascript\">  setTimeout('location=(\"http://192.168.65.79/acceuil_connexion.php\")' ,10); </script>");
+                header('Location: http://127.0.0.1/Projet_Cross/accueil.php');
+                //print("<script type=\"text/javascript\">  setTimeout('location=(\"http://192.168.65.79/accueil_connexion.php\")' ,10); </script>");
             }
         ?>
 
