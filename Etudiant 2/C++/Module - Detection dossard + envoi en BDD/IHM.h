@@ -8,6 +8,7 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
 #include "include/mysql.h"
+#include "ClassCourse.h"
 #include <Vcl.ExtCtrls.hpp>
 #include <Windows.h>
 #include <deque>
@@ -48,6 +49,8 @@ private:	// Déclarations utilisateur
 	AnsiString NomCourse ;
 	AnsiString IdCourseChoisie;
 	AnsiString NomParticipantsCourse;
+	AnsiString NbToursCourse;
+	ClassCourse *Course;
 public:		// Déclarations utilisateur
 	__fastcall TForm1(TComponent* Owner);
 };

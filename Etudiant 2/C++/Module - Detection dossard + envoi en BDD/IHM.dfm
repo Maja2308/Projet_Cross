@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Form1'
-  ClientHeight = 461
-  ClientWidth = 1020
+  ClientHeight = 467
+  ClientWidth = 1022
   Color = cl3DLight
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -104,7 +104,7 @@ object Form1: TForm1
     Left = 8
     Top = 246
     Width = 129
-    Height = 51
+    Height = 59
     TabOrder = 3
   end
   object ListBoxNom: TListBox
@@ -123,17 +123,17 @@ object Form1: TForm1
     TabOrder = 5
   end
   object ListBoxDossard: TListBox
-    Left = 888
+    Left = 907
     Top = 236
-    Width = 124
+    Width = 105
     Height = 37
     ItemHeight = 13
     TabOrder = 6
   end
   object NouveauDossard: TButton
-    Left = 888
+    Left = 907
     Top = 205
-    Width = 124
+    Width = 105
     Height = 25
     Caption = 'Nouveau Dossard'
     TabOrder = 7

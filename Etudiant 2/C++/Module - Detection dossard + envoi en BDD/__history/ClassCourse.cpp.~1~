@@ -1,0 +1,27 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "ClassCourse.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+
+ClassCourse::ClassCourse()
+{
+
+}
+
+ClassCourse::~ClassCourse()
+{
+
+}
+
+int ClassCourse::getIdCourse(int IdCourse)
+{
+	return IdCourse;
+}
+
+int ClassCourse::getNbTours(int NbTours)
+{
+	return NbTours;
+}

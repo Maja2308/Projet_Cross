@@ -20,6 +20,7 @@ TForm1 *Form1;
 __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
 {
+	Course = new ClassCourse();
 	mySQL = mysql_init(NULL);
 
 	conn=mysql_real_connect(mySQL, HOST, USER, PASSWORD, DATABASE, 0, NULL, 0);
@@ -41,23 +42,23 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 		Panel->Color = clLime;
 		AnsiString selectCourses = "SELECT `Nom` FROM `Course`";
 
-	if (!mysql_query(mySQL, selectCourses.c_str()))
-	{
-		myRES = mysql_store_result(mySQL);
-		if (myRES)
+		if (!mysql_query(mySQL, selectCourses.c_str()))
 		{
-			for(unsigned int i = 0; i < myRES->row_count; i++)
+			myRES = mysql_store_result(mySQL);
+			if (myRES)
 			{
-				myROW = mysql_fetch_row(myRES);
-				for(unsigned int j = 0; j < mysql_num_fields(myRES); j++)
+				for(unsigned int i = 0; i < myRES->row_count; i++)
 				{
-					NomCourse = myROW[j];
-					ListBoxNomCourse->Items->Add(NomCourse);
+					myROW = mysql_fetch_row(myRES);
+					for(unsigned int j = 0; j < mysql_num_fields(myRES); j++)
+					{
+						NomCourse = myROW[j];
+						ListBoxNomCourse->Items->Add(NomCourse);
+					}
 				}
+				mysql_free_result(myRES);
 			}
-			mysql_free_result(myRES);
 		}
-	}
 	}
 }
 
@@ -69,10 +70,10 @@ void __fastcall TForm1::ValiderCourseClick(TObject *Sender)
 	ListBoxNom->Clear();
 	String nomCourseChoisie = ListBoxNomCourse->Items->Strings[ListBoxNomCourse->ItemIndex];//on recupere le nom de la course choisie
 	MemoCourseChoisie->Lines->Add(nomCourseChoisie);//affichage de la course choisie
-	//on selectionne l'id cours een fonction de son nom.
+	//on selectionne l'id cours en fonction de son nom.
 	AnsiString selectIdCourseChoisie = "SELECT `IdCourse` FROM `Course` WHERE `Nom` = '"+nomCourseChoisie+"'";
 
-    //envoi de la requete
+	//select l'id de la course en fonction de son nom.
 	if (!mysql_query(mySQL, selectIdCourseChoisie.c_str()))
 	{
 		myRES = mysql_store_result(mySQL);
@@ -85,17 +86,22 @@ void __fastcall TForm1::ValiderCourseClick(TObject *Sender)
 				{
 					IdCourseChoisie = myROW[j];
 					MemoCourseChoisie->Lines->Add(IdCourseChoisie);//affiche l'id course dans le memo
+					Course->getIdCourse(IdCourseChoisie.ToInt());
 				}
 			}
 			mysql_free_result(myRES);
 		}
 	}
-	AnsiString DeleteCourseActuelle = "DELETE FROM `CourseActuelle`";
-	AnsiString insertCourseActuelle = "INSERT INTO `CourseActuelle`(`IdCourse`) VALUES ('"+IdCourseChoisie+"')";
-	AnsiString selectNomUtilisateur = "SELECT `Nom` FROM `Utilisateur`, `Participant`,`CourseActuelle` WHERE '"+IdCourseChoisie+"' = Participant.IdCourse AND Participant.IdUtilisateur = Utilisateur.IdUtilisateur";
-	mysql_query(mySQL, DeleteCourseActuelle.c_str());
-	mysql_query(mySQL, insertCourseActuelle.c_str());
 
+		AnsiString DeleteCourseActuelle = "DELETE FROM `CourseActuelle`";
+		AnsiString insertCourseActuelle = "INSERT INTO `CourseActuelle`(`IdCourse`) VALUES ('"+IdCourseChoisie+"')";
+		AnsiString selectNomUtilisateur = "SELECT `Nom` FROM `Utilisateur`, `Participant`,`CourseActuelle` WHERE '"+IdCourseChoisie+"' = Participant.IdCourse AND Participant.IdUtilisateur = Utilisateur.IdUtilisateur";
+		AnsiString selectNbTours = "SELECT `NbTours` FROM `Course` WHERE `IdCourse` = '"+IdCourseChoisie+"'";
+
+		mysql_query(mySQL, DeleteCourseActuelle.c_str());
+		mysql_query(mySQL, insertCourseActuelle.c_str());
+
+	//Select noms des coureurs
 	if (!mysql_query(mySQL, selectNomUtilisateur.c_str()))
 	{
 		myRES = mysql_store_result(mySQL);
@@ -108,6 +114,25 @@ void __fastcall TForm1::ValiderCourseClick(TObject *Sender)
 				{
 					NomParticipantsCourse = myROW[j];
 					ListBoxNom->Items->Add(NomParticipantsCourse);
+				}
+			}
+			mysql_free_result(myRES);
+		}
+	}
+
+	// Select NbTours
+	if (!mysql_query(mySQL, selectNbTours.c_str()))
+	{
+		myRES = mysql_store_result(mySQL);
+		if (myRES)//si il y a un resultat
+		{
+			for(unsigned int i = 0; i < myRES->row_count; i++)//compte le nb de resultat
+			{
+				myROW = mysql_fetch_row(myRES);//les lignes
+				for(unsigned int j = 0; j < mysql_num_fields(myRES); j++)
+				{
+					NbToursCourse = myROW[j];
+					Course->getNbTours(NbToursCourse.ToInt());
 				}
 			}
 			mysql_free_result(myRES);
