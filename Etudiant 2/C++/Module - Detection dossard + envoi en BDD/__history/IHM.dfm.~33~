@@ -37,7 +37,7 @@ object Form1: TForm1
   end
   object Label1: TLabel
     Left = 8
-    Top = 211
+    Top = 227
     Width = 83
     Height = 16
     Caption = 'Course choisie'
@@ -49,7 +49,7 @@ object Form1: TForm1
     ParentFont = False
   end
   object Label2: TLabel
-    Left = 160
+    Left = 344
     Top = 48
     Width = 120
     Height = 16
@@ -102,16 +102,16 @@ object Form1: TForm1
   end
   object MemoCourseChoisie: TMemo
     Left = 8
-    Top = 230
+    Top = 246
     Width = 129
-    Height = 51
+    Height = 59
     TabOrder = 3
   end
   object ListBoxNom: TListBox
-    Left = 160
-    Top = 67
+    Left = 344
+    Top = 70
     Width = 129
-    Height = 133
+    Height = 130
     ItemHeight = 13
     TabOrder = 4
   end
@@ -124,7 +124,7 @@ object Form1: TForm1
   end
   object ListBoxDossard: TListBox
     Left = 907
-    Top = 148
+    Top = 236
     Width = 105
     Height = 37
     ItemHeight = 13
@@ -132,7 +132,7 @@ object Form1: TForm1
   end
   object NouveauDossard: TButton
     Left = 907
-    Top = 117
+    Top = 205
     Width = 105
     Height = 25
     Caption = 'Nouveau Dossard'

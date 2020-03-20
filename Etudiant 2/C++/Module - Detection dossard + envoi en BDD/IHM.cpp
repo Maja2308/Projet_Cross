@@ -68,6 +68,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::ValiderCourseClick(TObject *Sender)
 {
 	ListBoxNom->Clear();
+    MemoCourseChoisie->Clear();
 	String nomCourseChoisie = ListBoxNomCourse->Items->Strings[ListBoxNomCourse->ItemIndex];//on recupere le nom de la course choisie
 	MemoCourseChoisie->Lines->Add(nomCourseChoisie);//affichage de la course choisie
 	//on selectionne l'id cours en fonction de son nom.
@@ -193,4 +194,5 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
+
 

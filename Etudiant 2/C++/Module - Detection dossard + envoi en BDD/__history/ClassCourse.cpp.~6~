@@ -27,10 +27,7 @@ void ClassCourse::getNbTours(int NbToursCourse)
 
 void ClassCourse::demarrerCourse(int IdCourse)
 {
-	for (int i = 0; i < NbTours; i++)
-	{
 
-	}
 }
 
 void ClassCourse::stopperCourse(int IdCourse)
