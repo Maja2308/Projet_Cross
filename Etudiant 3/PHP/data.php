@@ -24,20 +24,45 @@ if ($conn->connect_error) {
 <?php
 
 
-$result = $conn->query("SELECT Nom, Prenom, Classe, TableTempsTour.IdParticipant, TableTempsTour.IdCourse, 
-AVG(tempsTour) AS tempsMoyen, 
-SUM(tempsTour) AS tempsTotal,
+$result = $conn->query("(SELECT  Nom, Prenom, Classe, TableTempsTour.IdParticipant, TableTempsTour.IdCourse, 
+(SELECT AVG(tempsTour) FROM ParticipantTempsTour 
+WHERE ParticipantTempsTour.IdCourse=TableTempsTour.IdCourse AND ParticipantTempsTour.IdParticipant=TableTempsTour.IdParticipant ORDER BY numTour DESC LIMIT 1) AS tempsMoyen, 
+(SELECT SUM(tempsTour) FROM ParticipantTempsTour 
+WHERE ParticipantTempsTour.IdCourse=TableTempsTour.IdCourse AND ParticipantTempsTour.IdParticipant=TableTempsTour.IdParticipant ORDER BY numTour DESC LIMIT 1)AS tempsTotal,
 (SELECT tempsTour FROM ParticipantTempsTour 
 WHERE ParticipantTempsTour.IdCourse=TableTempsTour.IdCourse AND ParticipantTempsTour.IdParticipant=TableTempsTour.IdParticipant ORDER BY numTour DESC LIMIT 1) AS tempsTour,
-MAX(numTour) AS numTour
+(SELECT numTour FROM ParticipantTempsTour 
+WHERE ParticipantTempsTour.IdCourse=TableTempsTour.IdCourse AND ParticipantTempsTour.IdParticipant=TableTempsTour.IdParticipant ORDER BY numTour DESC LIMIT 1) AS numTour
 FROM
 (
 SELECT IdParticipant, IdCourse, tempsTour, numTour FROM ParticipantTempsTour
 WHERE IdCourse = (SELECT IdCourse FROM CourseActuelle LIMIT 1)
-
 ) AS TableTempsTour
 INNER JOIN Utilisateur NATURAL JOIN Participant ON Participant.IdParticipant = TableTempsTour.IdParticipant
+
 GROUP BY IdParticipant, IdCourse 
+ORDER BY numTour DESC , tempsTotal ASC 
+ )
+
+UNION 
+
+SELECT   Nom, Prenom, Classe, TableTempsTour.IdParticipant, TableTempsTour.IdCourse, 
+(SELECT AVG(tempsTour) FROM ParticipantTempsTour 
+WHERE ParticipantTempsTour.IdCourse=TableTempsTour.IdCourse AND ParticipantTempsTour.IdParticipant=TableTempsTour.IdParticipant ORDER BY numTour DESC LIMIT 1) AS tempsMoyen, 
+(SELECT SUM(tempsTour) FROM ParticipantTempsTour 
+WHERE ParticipantTempsTour.IdCourse=TableTempsTour.IdCourse AND ParticipantTempsTour.IdParticipant=TableTempsTour.IdParticipant ORDER BY numTour DESC LIMIT 1)AS tempsTotal,
+(SELECT tempsTour FROM ParticipantTempsTour 
+WHERE ParticipantTempsTour.IdCourse=TableTempsTour.IdCourse AND ParticipantTempsTour.IdParticipant=TableTempsTour.IdParticipant ORDER BY numTour DESC LIMIT 1) AS tempsTour,
+(SELECT numTour FROM ParticipantTempsTour 
+WHERE ParticipantTempsTour.IdCourse=TableTempsTour.IdCourse AND ParticipantTempsTour.IdParticipant=TableTempsTour.IdParticipant ORDER BY numTour DESC LIMIT 1) AS numTour
+FROM
+(
+SELECT Participant.IdParticipant, Participant.IdCourse ,numTour,tempsTour FROM Participant INNER JOIN ParticipantTempsTour
+WHERE Participant.IdCourse = (SELECT IdCourse FROM CourseActuelle LIMIT 1)
+ 
+) AS TableTempsTour
+INNER JOIN Utilisateur NATURAL JOIN Participant ON Participant.IdParticipant = TableTempsTour.IdParticipant 
+GROUP BY IdParticipant, IdCourse
 ORDER BY numTour DESC , tempsTotal ASC ") ;
 
 //$resu = $conn->query("SELECT IdParticipant, IdCourse, AVG(tempsTour) AS tempsMoyen, SUM(tempsTour) AS tempsTotal FROM ParticipantTempsTour GROUP BY IdParticipant, IdCourse  ");
@@ -83,15 +108,16 @@ if ($result->num_rows > 0) {
 	<table class="table table-striped table-dark">
 	<th scope="col">Nom de la course</th>
 	<th scope="col">Date de la course</th>
-
+	<th scope="col">Nombre de tours</th>
 <?php 
-$result = $conn->query("SELECT Nom, Date FROM Course ORDER BY Date ASC Limit 1 " );
+$result = $conn->query("SELECT Nom, NbTours ,Date FROM Course ORDER BY Date ASC Limit 1 " );
 if ($result->num_rows > 0) {
 	while ($row = $result->fetch_assoc()) {
 
 		echo "<tr>";
 	    echo "<td>".$row['Nom']."</td>";
-	    echo "<td>" .$row['Date']."</td>" ;
+		echo "<td>" .$row['Date']."</td>" ;
+		echo "<td>" .$row['NbTours']."</td>" ;
 		echo "</tr>";
 	}
 }	
