@@ -37,3 +37,13 @@ void ClassCourse::stopperCourse(int IdCourse)
 {
 
 }
+
+void ClassCourse::ajouterDossard(NumDossard)
+{
+     listeDossards.push_back(NumDossard);
+}
+
+std::vector<int> ClassCourse::returnDossards()
+{
+    return listeDossards;
+}

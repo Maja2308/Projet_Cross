@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <vector>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -36,11 +37,16 @@ __published:	// Composants gérés par l'EDI
 	TLabel *Label2;
 	TButton *NouveauDossard;
 	TLabel *LabelAssocier;
-	TButton *Button1;
+	TButton *ButtonAssociation;
+	TButton *ButtonDossard;
+	TListBox *ListBoxVector;
+	TButton *ButtonDemarrer;
 	void __fastcall ValiderCourseClick(TObject *Sender);
 	void __fastcall Timer1Timer(TObject *Sender);
 	void __fastcall NouveauDossardClick(TObject *Sender);
-	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall ButtonAssociationClick(TObject *Sender);
+	void __fastcall ButtonDossardClick(TObject *Sender);
+	void __fastcall ButtonDemarrerClick(TObject *Sender);
 private:	// Déclarations utilisateur
 	MYSQL * mySQL;
 	MYSQL *conn;

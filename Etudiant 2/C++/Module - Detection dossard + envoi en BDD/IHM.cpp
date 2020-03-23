@@ -35,7 +35,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 		Resultat->Visible=false;
 		ListBoxDossard->Visible=false;
 		ValiderCourse->Visible=false;
-        NouveauDossard->Visible=false;
+		NouveauDossard->Visible=false;
 	}
 	else
 	{
@@ -67,8 +67,16 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 void __fastcall TForm1::ValiderCourseClick(TObject *Sender)
 {
+	//------------------------------------------------------------//
+	Label2->Visible=true;
+	ListBoxNom->Visible=true;
+	NouveauDossard->Visible=true;
+	ListBoxDossard->Visible=true;
+	LabelAssocier->Visible=true;
+	ButtonAssociation->Visible=true;
 	ListBoxNom->Clear();
-    MemoCourseChoisie->Clear();
+	MemoCourseChoisie->Clear();
+    //-----------------------------------------------------------//
 	String nomCourseChoisie = ListBoxNomCourse->Items->Strings[ListBoxNomCourse->ItemIndex];//on recupere le nom de la course choisie
 	MemoCourseChoisie->Lines->Add(nomCourseChoisie);//affichage de la course choisie
 	//on selectionne l'id cours en fonction de son nom.
@@ -159,6 +167,8 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 
 void __fastcall TForm1::NouveauDossardClick(TObject *Sender)
 {
+	ButtonDossard->Visible=true;
+    ListBoxVector->Visible=true;
 	int numDossard = 0;
 	srand(time(NULL)); // initialisation de rand
 	numDossard = rand()%(2000000-1000000) + 1000000;
@@ -167,12 +177,13 @@ void __fastcall TForm1::NouveauDossardClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button1Click(TObject *Sender)
+void __fastcall TForm1::ButtonAssociationClick(TObject *Sender)
 {
 	String ParticipantChoisi = ListBoxNom->Items->Strings[ListBoxNom->ItemIndex];
 	String NumDossard = ListBoxDossard->Items->Strings[ListBoxDossard->ItemIndex];
 	AnsiString selectIdParticipant = "SELECT `IdUtilisateur` FROM `Utilisateur` WHERE `Nom` = '"+ParticipantChoisi+"'";
 	AnsiString IdParticipantChoisi;
+    Course->ajouterDossard(NumDossard.ToInt());
 	if (!mysql_query(mySQL, selectIdParticipant.c_str()))
 	{
 		myRES = mysql_store_result(mySQL);
@@ -191,8 +202,35 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	}
 	AnsiString updateNumDossard = "UPDATE `Participant` SET `IdDossard`= '"+NumDossard+"' WHERE `IdUtilisateur`= '"+IdParticipantChoisi+"'";
 	mysql_query(mySQL, updateNumDossard.c_str());
-
+    ButtonDemarrer->Visible=true;
 }
 //---------------------------------------------------------------------------
 
+
+void __fastcall TForm1::ButtonDossardClick(TObject *Sender)
+{
+	std::vector<int> dossards = Course->returnDossards();
+	for (int i = 0; i < dossards.size(); i++)
+	{
+		 ListBoxVector->Items->Add(dossards[i]);
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::ButtonDemarrerClick(TObject *Sender)
+{
+	ListBoxNomCourse->Visible= false;
+	MemoCourseChoisie->Visible= false;
+	ListBoxNom->Visible=false;
+	Label1->Visible=false;
+	Label2->Visible=false;
+	Resultat->Visible=false;
+	ListBoxDossard->Visible=false;
+	ValiderCourse->Visible=false;
+	NouveauDossard->Visible=false;
+	LabelAssocier->Visible=false;
+	ButtonAssociation->Visible=false;
+    ButtonDossard->Visible=false;
+}
+//---------------------------------------------------------------------------
 
