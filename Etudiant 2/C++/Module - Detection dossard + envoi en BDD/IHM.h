@@ -49,18 +49,16 @@ __published:	// Composants gérés par l'EDI
 	void __fastcall ButtonDossardClick(TObject *Sender);
 	void __fastcall ButtonDemarrerClick(TObject *Sender);
 private:	// Déclarations utilisateur
-	MYSQL * mySQL;
-	MYSQL *conn;
-	MYSQL_RES *myRES;
-	MYSQL_ROW myROW;
 	ClassBDD *SQL;
+	ClassCourse *Course;
+
 	String MSG_Error_Co, MSG_Error_Select, MSG_Error_Insert;
 	vector<String> resultats;
 	//AnsiString NomCourse ;
 	AnsiString IdCourseChoisie;
 	AnsiString NomParticipantsCourse;
 	AnsiString NbToursCourse;
-	ClassCourse *Course;
+
 public:		// Déclarations utilisateur
 	__fastcall TForm1(TComponent* Owner);
 };

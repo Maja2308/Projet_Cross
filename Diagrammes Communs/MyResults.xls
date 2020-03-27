@@ -1,0 +1,105 @@
+<table  class="BodyTable"  cellspacing="0" rules="cols" border="1" style="border-collapse:collapse;">
+<tr class="GridHeaderStyle">
+<td class='nowrap'  width='1%'>Component</td>
+<td class='nowrap' width='1%'>Score</td>
+<td class='nowrap' width='1%'>Time taken</td>
+<td class='nowrap' width='1%'>CEF</td>
+<td class='nowrap' width='1%'>Note</td>
+<td class='nowrap' width='1%'>Date taken</td>
+<td class='nowrap' width='1%'>Status</td>
+<td width='90%'></td></tr>
+<tr Class='GridItemStyle'>
+<TD class='nowrap'><span class='nowrap'>Oxford Online Placement Test</span>
+</td><TD class='Markinteger'>
+<SPAN width='1%' class='Markinteger'>55</SPAN>
+</TD>
+</td><TD class='Markalphanumeric'>
+<SPAN width='1%' class='Markalphanumeric'>00:53</SPAN>
+</TD>
+</td><TD class='Markalphanumeric'>
+<SPAN width='1%' class='Markalphanumeric'>B1</SPAN>
+</TD>
+</td><TD class='nowrap'>
+<SPAN width='1%' class='MarkLabel' id='c03' onmouseover="xstooltip_show_simple(event, 't03','c03')" onmouseout="xstooltip_hide2(event,'t03')">Hover over to view additional information...</SPAN>
+</TD>
+</td><TD class='Markalphanumeric'>
+<SPAN width='1%' class='Markalphanumeric'>2020-03-27 12:22</SPAN>
+</TD>
+</td><TD class='Markalphanumeric'>
+<SPAN width='1%' class='Markalphanumeric'>Normal</SPAN>
+</TD>
+<TD width='90%'></TD>
+</tr>
+<tr Class='GridAlternatingItemStyle'>
+<TD class='nowrap'>&nbsp;&nbsp;<span class='nowrap'>Use of English:</span>
+</td><TD class='Markinteger'>
+<SPAN width='1%' class='Markinteger'>49</SPAN>
+</TD>
+</td><TD class='Markalphanumeric'>
+<SPAN width='1%' class='Markalphanumeric'>00:17</SPAN>
+</TD>
+</td><TD class='Markalphanumeric'>
+<SPAN width='1%' class='Markalphanumeric'>B1</SPAN>
+</TD>
+</td><TD class='nowrap'>
+<SPAN width='1%' class='MarkLabel' id='c13' onmouseover="xstooltip_show_simple(event, 't13','c13')" onmouseout="xstooltip_hide2(event,'t13')">Hover over to view additional information...</SPAN>
+</TD>
+</td><TD class='nowrap'>
+</TD>
+</td><TD class='nowrap'>
+</TD>
+<TD width='90%'></TD>
+</tr>
+<tr Class='GridItemStyle'>
+<TD class='nowrap'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='nowrap'>Section 1: Approximately 30 Questions</span>
+</td><TD class='nowrap'>
+</TD>
+</td><TD class='nowrap'>
+</TD>
+</td><TD class='nowrap'>
+</TD>
+</td><TD class='nowrap'>
+</TD>
+</td><TD class='nowrap'>
+</TD>
+</td><TD class='nowrap'>
+</TD>
+<TD width='90%'></TD>
+</tr>
+<tr Class='GridAlternatingItemStyle'>
+<TD class='nowrap'>&nbsp;&nbsp;<span class='nowrap'>Listening:</span>
+</td><TD class='Markinteger'>
+<SPAN width='1%' class='Markinteger'>60</SPAN>
+</TD>
+</td><TD class='Markalphanumeric'>
+<SPAN width='1%' class='Markalphanumeric'>00:36</SPAN>
+</TD>
+</td><TD class='Markalphanumeric'>
+<SPAN width='1%' class='Markalphanumeric'>B2</SPAN>
+</TD>
+</td><TD class='nowrap'>
+<SPAN width='1%' class='MarkLabel' id='c33' onmouseover="xstooltip_show_simple(event, 't33','c33')" onmouseout="xstooltip_hide2(event,'t33')">Hover over to view additional information...</SPAN>
+</TD>
+</td><TD class='nowrap'>
+</TD>
+</td><TD class='nowrap'>
+</TD>
+<TD width='90%'></TD>
+</tr>
+<tr Class='GridItemStyle'>
+<TD class='nowrap'>&nbsp;&nbsp;&nbsp;&nbsp;<span class='nowrap'>Section 2: Approximately 15 Questions</span>
+</td><TD class='nowrap'>
+</TD>
+</td><TD class='nowrap'>
+</TD>
+</td><TD class='nowrap'>
+</TD>
+</td><TD class='nowrap'>
+</TD>
+</td><TD class='nowrap'>
+</TD>
+</td><TD class='nowrap'>
+</TD>
+<TD width='90%'></TD>
+</tr>
+</table>

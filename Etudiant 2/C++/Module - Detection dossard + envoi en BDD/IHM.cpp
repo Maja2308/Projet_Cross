@@ -25,7 +25,6 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 	SQL = new ClassBDD();
 
 	//messages d'erreurs
-	mySQL = mysql_init(NULL);
 	MSG_Error_Co = "Erreur de connexion BDD";
 	MSG_Error_Select = "Erreur sur la requete Select";
 	MSG_Error_Insert = "Erreur sur la requete Insert";
