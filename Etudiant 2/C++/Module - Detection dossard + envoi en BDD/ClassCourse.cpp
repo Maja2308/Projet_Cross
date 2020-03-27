@@ -15,12 +15,12 @@ ClassCourse::~ClassCourse()
 
 }
 
-void ClassCourse::getIdCourse(int IdCourseChoisie)
+void ClassCourse::setIdCourse(int IdCourseChoisie)
 {
 	IdCourse = IdCourseChoisie;
 }
 
-void ClassCourse::getNbTours(int NbToursCourse)
+void ClassCourse::setNbTours(int NbToursCourse)
 {
     NbTours = NbToursCourse;
 }

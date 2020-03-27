@@ -55,7 +55,8 @@
     <Transaction>2020/03/20 09:41:26.000.741,=D:\Projet_Cross\Projet_Cross\Etudiant 2\C++\Module - Detection dossard + envoi en BDD\Unit1.cpp</Transaction>
     <Transaction>2020/03/20 09:41:41.000.604,D:\Projet_Cross\Projet_Cross\Etudiant 2\C++\Module - Detection dossard + envoi en BDD\ClassCourse.h=D:\Projet_Cross\Projet_Cross\Etudiant 2\C++\Module - Detection dossard + envoi en BDD\Unit1.h</Transaction>
     <Transaction>2020/03/20 09:41:41.000.604,D:\Projet_Cross\Projet_Cross\Etudiant 2\C++\Module - Detection dossard + envoi en BDD\ClassCourse.cpp=D:\Projet_Cross\Projet_Cross\Etudiant 2\C++\Module - Detection dossard + envoi en BDD\Unit1.cpp</Transaction>
-  </Transactions>  <ProjectSortOrder AutoSort="0" SortType="0">
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="include"/>
     <File Path="include\big_endian.h"/>
     <File Path="include\byte_order_generic.h"/>

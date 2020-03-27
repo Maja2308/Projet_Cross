@@ -20,12 +20,32 @@ TForm1 *Form1;
 __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
 {
+	//instanciation des classes
 	Course = new ClassCourse();
-	mySQL = mysql_init(NULL);
+	SQL = new ClassBDD();
 
-	conn=mysql_real_connect(mySQL, HOST, USER, PASSWORD, DATABASE, 0, NULL, 0);
-	if(conn==NULL)
-	{
+	//messages d'erreurs
+	mySQL = mysql_init(NULL);
+	MSG_Error_Co = "Erreur de connexion BDD";
+	MSG_Error_Select = "Erreur sur la requete Select";
+	MSG_Error_Insert = "Erreur sur la requete Insert";
+
+	String RequeteSelectCourses = "SELECT `Nom` FROM `Course`";
+
+	//CONNECT BDD
+	bool connect = SQL->Connexion(HOST, USER, PASSWORD, DATABASE, &MSG_Error_Co);//fonctionne
+	 if (connect == true)//si connexion fonctionne
+	 {
+		 Panel->Color = clLime; //bouton vert si connectée
+		 //SELECT COURSES
+		 SQL->Select(&resultats, &MSG_Error_Select, RequeteSelectCourses);
+		 for (int i = 0; i < resultats.size(); i++)
+		 {
+			ListBoxNomCourse->Items->Add(resultats[i]);
+		 }
+	 }
+	 else//si connexion fonctionne pas
+	 {
 		//on rend tout invisible
 		ListBoxNomCourse->Visible= false;
 		MemoCourseChoisie->Visible= false;
@@ -36,30 +56,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 		ListBoxDossard->Visible=false;
 		ValiderCourse->Visible=false;
 		NouveauDossard->Visible=false;
-	}
-	else
-	{
-		Panel->Color = clLime;
-		AnsiString selectCourses = "SELECT `Nom` FROM `Course`";
-
-		if (!mysql_query(mySQL, selectCourses.c_str()))
-		{
-			myRES = mysql_store_result(mySQL);
-			if (myRES)
-			{
-				for(unsigned int i = 0; i < myRES->row_count; i++)
-				{
-					myROW = mysql_fetch_row(myRES);
-					for(unsigned int j = 0; j < mysql_num_fields(myRES); j++)
-					{
-						NomCourse = myROW[j];
-						ListBoxNomCourse->Items->Add(NomCourse);
-					}
-				}
-				mysql_free_result(myRES);
-			}
-		}
-	}
+	 }
 }
 
 //---------------------------------------------------------------------------
@@ -67,7 +64,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 void __fastcall TForm1::ValiderCourseClick(TObject *Sender)
 {
-	//------------------------------------------------------------//
+//------------------------AFFICHAGE------------------------------------//
 	Label2->Visible=true;
 	ListBoxNom->Visible=true;
 	NouveauDossard->Visible=true;
@@ -76,83 +73,53 @@ void __fastcall TForm1::ValiderCourseClick(TObject *Sender)
 	ButtonAssociation->Visible=true;
 	ListBoxNom->Clear();
 	MemoCourseChoisie->Clear();
-    //-----------------------------------------------------------//
+
+//------------------------SELECT ET INSERT-----------------------------//
 	String nomCourseChoisie = ListBoxNomCourse->Items->Strings[ListBoxNomCourse->ItemIndex];//on recupere le nom de la course choisie
 	MemoCourseChoisie->Lines->Add(nomCourseChoisie);//affichage de la course choisie
-	//on selectionne l'id cours en fonction de son nom.
-	AnsiString selectIdCourseChoisie = "SELECT `IdCourse` FROM `Course` WHERE `Nom` = '"+nomCourseChoisie+"'";
 
-	//select l'id de la course en fonction de son nom.
-	if (!mysql_query(mySQL, selectIdCourseChoisie.c_str()))
+	//on selectionne l'id course en fonction de son nom.
+	String selectIdCourseChoisie = "SELECT `IdCourse` FROM `Course` WHERE `Nom` = ";
+	selectIdCourseChoisie += "'"+nomCourseChoisie+"'";
+
+	SQL->Select(&resultats, &MSG_Error_Select, selectIdCourseChoisie);
+	for (int i = 0; i < resultats.size(); i++)
 	{
-		myRES = mysql_store_result(mySQL);
-		if (myRES)//si il y a un resultat
-		{
-			for(unsigned int i = 0; i < myRES->row_count; i++)//compte le nb de resultat
-			{
-				myROW = mysql_fetch_row(myRES);//les lignes
-				for(unsigned int j = 0; j < mysql_num_fields(myRES); j++)
-				{
-					IdCourseChoisie = myROW[j];
-					MemoCourseChoisie->Lines->Add(IdCourseChoisie);//affiche l'id course dans le memo
-					Course->getIdCourse(IdCourseChoisie.ToInt());
-				}
-			}
-			mysql_free_result(myRES);
-		}
+		MemoCourseChoisie->Lines->Add(resultats[i]);
+		IdCourseChoisie=resultats[i];
+		Course->setIdCourse(IdCourseChoisie.ToInt());
 	}
 
-		AnsiString DeleteCourseActuelle = "DELETE FROM `CourseActuelle`";
-		AnsiString insertCourseActuelle = "INSERT INTO `CourseActuelle`(`IdCourse`) VALUES ('"+IdCourseChoisie+"')";
-		AnsiString selectNomUtilisateur = "SELECT `Nom` FROM `Utilisateur`, `Participant`,`CourseActuelle` WHERE '"+IdCourseChoisie+"' = Participant.IdCourse AND Participant.IdUtilisateur = Utilisateur.IdUtilisateur";
-		AnsiString selectNbTours = "SELECT `NbTours` FROM `Course` WHERE `IdCourse` = '"+IdCourseChoisie+"'";
+	String DeleteCourseActuelle = "DELETE FROM `CourseActuelle`";
+	String insertCourseActuelle = "INSERT INTO `CourseActuelle`(`IdCourse`) VALUES";
+	insertCourseActuelle += "('"+IdCourseChoisie+"')";
+	String selectNomUtilisateur = "SELECT `Nom` FROM `Utilisateur`, `Participant`,`CourseActuelle` WHERE";
+	selectNomUtilisateur +="'"+IdCourseChoisie+"'";
+	selectNomUtilisateur +="= Participant.IdCourse AND Participant.IdUtilisateur = Utilisateur.IdUtilisateur";
+	String selectNbTours = "SELECT `NbTours` FROM `Course` WHERE `IdCourse` = ";
+	selectNbTours +="'"+IdCourseChoisie+"'";
 
-		mysql_query(mySQL, DeleteCourseActuelle.c_str());
-		mysql_query(mySQL, insertCourseActuelle.c_str());
+	SQL->Query(&MSG_Error_Insert, DeleteCourseActuelle);
+	SQL->Query(&MSG_Error_Insert, insertCourseActuelle);
 
 	//Select noms des coureurs
-	if (!mysql_query(mySQL, selectNomUtilisateur.c_str()))
+	SQL->Select(&resultats, &MSG_Error_Select, selectNomUtilisateur);
+	for (int i = 0; i < resultats.size(); i++)
 	{
-		myRES = mysql_store_result(mySQL);
-		if (myRES)//si il y a un resultat
-		{
-			for(unsigned int i = 0; i < myRES->row_count; i++)//compte le nb de resultat
-			{
-				myROW = mysql_fetch_row(myRES);//les lignes
-				for(unsigned int j = 0; j < mysql_num_fields(myRES); j++)
-				{
-					NomParticipantsCourse = myROW[j];
-					ListBoxNom->Items->Add(NomParticipantsCourse);
-				}
-			}
-			mysql_free_result(myRES);
-		}
+		ListBoxNom->Items->Add(resultats[i]);
 	}
 
-	// Select NbTours
-	if (!mysql_query(mySQL, selectNbTours.c_str()))
+	SQL->Select(&resultats, &MSG_Error_Select, selectNbTours);
+	for (int i = 0; i < resultats.size(); i++)
 	{
-		myRES = mysql_store_result(mySQL);
-		if (myRES)//si il y a un resultat
-		{
-			for(unsigned int i = 0; i < myRES->row_count; i++)//compte le nb de resultat
-			{
-				myROW = mysql_fetch_row(myRES);//les lignes
-				for(unsigned int j = 0; j < mysql_num_fields(myRES); j++)
-				{
-					NbToursCourse = myROW[j];
-					Course->getNbTours(NbToursCourse.ToInt());
-				}
-			}
-			mysql_free_result(myRES);
-		}
+		NbToursCourse = resultats[i];
+		Course->setNbTours(NbToursCourse.ToInt());
 	}
-}
-//---------------------------------------------------------------------------
-
+}//---------------------------------------------------------------------------
 
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
+//------------------HORLOGE-----------------------//
 	time_t curr_time;
 	curr_time = time(NULL);
 	tm *tm_local = localtime(&curr_time);
@@ -167,6 +134,7 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 
 void __fastcall TForm1::NouveauDossardClick(TObject *Sender)
 {
+//------------------RANDOM DE DOSSARD-----------//
 	ButtonDossard->Visible=true;
     ListBoxVector->Visible=true;
 	int numDossard = 0;
@@ -179,36 +147,35 @@ void __fastcall TForm1::NouveauDossardClick(TObject *Sender)
 
 void __fastcall TForm1::ButtonAssociationClick(TObject *Sender)
 {
+//----------------ASSOCIATION DE DOSSARDS---------------------//
 	String ParticipantChoisi = ListBoxNom->Items->Strings[ListBoxNom->ItemIndex];
 	String NumDossard = ListBoxDossard->Items->Strings[ListBoxDossard->ItemIndex];
-	AnsiString selectIdParticipant = "SELECT `IdUtilisateur` FROM `Utilisateur` WHERE `Nom` = '"+ParticipantChoisi+"'";
+
+	String selectIdParticipant = "SELECT `IdUtilisateur` FROM `Utilisateur` WHERE `Nom` = ";
+	selectIdParticipant +="'"+ParticipantChoisi+"'";
+
 	AnsiString IdParticipantChoisi;
-    Course->ajouterDossard(NumDossard.ToInt());
-	if (!mysql_query(mySQL, selectIdParticipant.c_str()))
-	{
-		myRES = mysql_store_result(mySQL);
-		if (myRES)//si il y a un resultat
-		{
-			for(unsigned int i = 0; i < myRES->row_count; i++)//compte le nb de resultat
-			{
-				myROW = mysql_fetch_row(myRES);//les lignes
-				for(unsigned int j = 0; j < mysql_num_fields(myRES); j++)
-				{
-					IdParticipantChoisi = myROW[j];
-				}
-			}
-			mysql_free_result(myRES);
-		}
-	}
-	AnsiString updateNumDossard = "UPDATE `Participant` SET `IdDossard`= '"+NumDossard+"' WHERE `IdUtilisateur`= '"+IdParticipantChoisi+"'";
-	mysql_query(mySQL, updateNumDossard.c_str());
+	Course->ajouterDossard(NumDossard.ToInt());
+
+	SQL->Select(&resultats, &MSG_Error_Select, selectIdParticipant);
+	for (int i = 0; i < resultats.size(); i++)
+		 {
+			IdParticipantChoisi = resultats[i];
+		 }
+
+	String updateNumDossard = "UPDATE `Participant` SET `IdDossard`= ";
+	updateNumDossard += "'"+NumDossard+"'";
+	updateNumDossard += "WHERE `IdUtilisateur`= ";
+	updateNumDossard +=	"'"+IdParticipantChoisi+"'";
+
+	SQL->Query(&MSG_Error_Insert, updateNumDossard);
     ButtonDemarrer->Visible=true;
 }
 //---------------------------------------------------------------------------
 
-
 void __fastcall TForm1::ButtonDossardClick(TObject *Sender)
 {
+//-----------AJOUT DU DOSSARD DANS LE VECTOR-----------//
 	std::vector<int> dossards = Course->returnDossards();
 	for (int i = 0; i < dossards.size(); i++)
 	{
@@ -219,18 +186,22 @@ void __fastcall TForm1::ButtonDossardClick(TObject *Sender)
 
 void __fastcall TForm1::ButtonDemarrerClick(TObject *Sender)
 {
+//-------------DISSIMULATION DES BOUTONS------------//
 	ListBoxNomCourse->Visible= false;
-	MemoCourseChoisie->Visible= false;
 	ListBoxNom->Visible=false;
+	ListBoxDossard->Visible=false;
+	MemoCourseChoisie->Visible= false;
+
 	Label1->Visible=false;
 	Label2->Visible=false;
-	Resultat->Visible=false;
-	ListBoxDossard->Visible=false;
-	ValiderCourse->Visible=false;
-	NouveauDossard->Visible=false;
 	LabelAssocier->Visible=false;
+	Resultat->Visible=false;
+
+	NouveauDossard->Visible=false;
+	ValiderCourse->Visible=false;
 	ButtonAssociation->Visible=false;
-    ButtonDossard->Visible=false;
+	ButtonDossard->Visible=false;
+	ButtonDemarrer->Visible=false;
 }
 //---------------------------------------------------------------------------
 

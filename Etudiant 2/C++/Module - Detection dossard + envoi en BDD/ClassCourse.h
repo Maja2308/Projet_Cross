@@ -13,8 +13,8 @@ class ClassCourse{
   public:
 	  ClassCourse();
 	  ~ClassCourse();
-	  void getIdCourse(int IdCourseChoisie);
-	  void getNbTours(int NbToursCourse);
+	  void setIdCourse(int IdCourseChoisie);
+	  void setNbTours(int NbToursCourse);
 	  void demarrerCourse(int IdCourse);
 	  void ajouterDossard(int NumDossard);
 	  void stopperCourse(int IdCourse);

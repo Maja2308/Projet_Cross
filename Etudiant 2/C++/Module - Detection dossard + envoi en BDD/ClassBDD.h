@@ -1,28 +1,44 @@
 //---------------------------------------------------------------------------
+//*****************************************************************************
+//* Programme : MySQL.h 									 date : 17/04/2018*
+//*---------------------------------------------------------------------------*
+//*                                                                           *
+//* Programmeurs : Pierre Baudelet							 classe : BTS SN2 *
+//*                Fabien Lamoureux                                           *
+//*                Jordan Lheureux                                            *
+//*-------------------------------------------------------------------------- *
+//* BUT : Enregistrer des temperatures, des décibels et la consomation        *
+//* électrique en BDD                                                         *
+//* Programmes associés : Didatec.exe                                         *
+//*****************************************************************************
+//---------------------------------------------------------------------------
+#ifndef MySQLH
+#define MySQLH
 
-#ifndef ClassBDDH
-#define ClassBDDH
+#include <vcl.h>
+#include <System.hpp>
+//Librairie permettant d'interroger la bdd
 #include "include/mysql.h"
-#include <Vcl.StdCtrls.hpp>
-
-#include <deque>
+//Librairie vector qui permet de realiser des tableaux dynamique, utile pour enregistrer les resultats des SELECT
 #include <vector>
-#include <windows.h>
-#include <tchar.h>
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
+using namespace std;
 //---------------------------------------------------------------------------
 class ClassBDD
 {
-
-
-public :
-
-private :
-
+		bool Etat;
+		//Suite de variables utilisees pour lire les resultats des requetes
+		MYSQL *MyS;
+		MYSQL_RES *myRES;
+		MYSQL_ROW myROW;
+		AnsiString aStr;
+		//Variables utilisees pour renvoyer les messages d'erreur
+		unsigned int myErrorCode;
+		AnsiString myErrorMsg;
+	public:
+		ClassBDD();
+		bool Connexion(String IPMys,String IDMys,String MDPMys,String BaseMys, String *MSG_Error);
+		bool Select(vector<String> *resultats, String *MSG_Error, String requeteMyS);
+		bool Query(String *MSG_Error, String requeteMyS);
+		bool Deconnexion();
 };
-
-
 #endif

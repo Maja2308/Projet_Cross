@@ -9,6 +9,7 @@
 #include <Vcl.Forms.hpp>
 #include "include/mysql.h"
 #include "ClassCourse.h"
+#include "ClassBDD.h"
 #include <Vcl.ExtCtrls.hpp>
 #include <Windows.h>
 #include <deque>
@@ -52,7 +53,10 @@ private:	// Déclarations utilisateur
 	MYSQL *conn;
 	MYSQL_RES *myRES;
 	MYSQL_ROW myROW;
-	AnsiString NomCourse ;
+	ClassBDD *SQL;
+	String MSG_Error_Co, MSG_Error_Select, MSG_Error_Insert;
+	vector<String> resultats;
+	//AnsiString NomCourse ;
 	AnsiString IdCourseChoisie;
 	AnsiString NomParticipantsCourse;
 	AnsiString NbToursCourse;
