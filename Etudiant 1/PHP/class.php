@@ -41,6 +41,7 @@
 			}
 		}
 
+
 		//fonction connection a la bdd
 		
 			//$LoginCompare  //login du visiteur
@@ -69,7 +70,7 @@
         {
             if(!is_null($this->_db))
             {
-				$request=$this->_db->query("SELECT username FROM Utilisateur WHERE Nom='$champLogin' AND Mdp='$champMdp' and admin =1");                     					
+				$request=$this->_db->query("SELECT * FROM Utilisateur WHERE Nom='$champLogin' AND Mdp='$champMdp' and Admin =1");                     					
 					
 				 if ($request->rowCount()==1)
 			 	 {

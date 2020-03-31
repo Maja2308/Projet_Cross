@@ -65,7 +65,7 @@
                                     <label class="control-label" for="btnSigner"></label>
                                     <div>
                                         <input id="btnSigner" type="submit" name="btnSigner" class="btn btn-primary" value="S'inscrire">
-                                        <a href="accueil_connexion.php" type="submit" name="btnSigner" class="btn btn-primary">Connexion</a>
+                                        <a href="index.php" type="submit" name="btnSigner" class="btn btn-primary">Connexion</a>
                                     </div>
                                 </div>
                             </fieldset>
