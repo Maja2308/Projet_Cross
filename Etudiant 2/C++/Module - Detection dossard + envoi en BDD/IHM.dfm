@@ -119,10 +119,10 @@ object Form1: TForm1
     Visible = False
   end
   object Memo2: TMemo
-    Left = 907
+    Left = 864
     Top = 8
-    Width = 105
-    Height = 73
+    Width = 150
+    Height = 49
     TabOrder = 5
   end
   object ListBoxDossard: TListBox
@@ -203,7 +203,7 @@ object Form1: TForm1
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer
-    Left = 872
+    Left = 808
     Top = 8
   end
 end

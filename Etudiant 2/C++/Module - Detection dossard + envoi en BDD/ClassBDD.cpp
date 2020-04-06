@@ -59,35 +59,36 @@ bool ClassBDD::Select(vector<String> *resultats, String *MSG_Error, String reque
 	//tableau en 2 dimensions pour enregistrer les resultats des requetes SELECT
 	vector<String> c_resultats;
 
-    // Allocation espace memoire
+	// Allocation espace memoire
 	char* requete=new char[requeteMyS.Length()+1];
 	// Conversion de String en char
 	wcstombs(requete,requeteMyS.c_str(),requeteMyS.Length()+1);
+	//si il y a bien une requete
 	if (!mysql_query(MyS, requete))
 	{
 		myRES = mysql_store_result(MyS);
 		if (myRES)
 		{
-			for(unsigned int i = 0; i < myRES->row_count; i++)
+			for(unsigned int i = 0; i < myRES->row_count; i++)//ligne par ligne
 			{
 				AnsiString aStr;
 				myROW = mysql_fetch_row(myRES);
 				for(unsigned int j = 0; j < mysql_num_fields(myRES); j++)
 				{
-					aStr = myROW[j];
-					c_resultats.push_back(aStr);
+					aStr = myROW[j]; //on stocke le resultat pour chaque ligne
+					c_resultats.push_back(aStr);//on l'insere dans le vector
 				}
 			}
 			mysql_free_result(myRES);
 		}
 
-		*resultats = c_resultats;
-		return true;
+		*resultats = c_resultats;//permet de recupere rles resultats dans le main
+		return true;//si ça a marché
 	}
 	else
 	{
-		return false;
-    }
+		return false;//si ça a échoué
+	}
 }
 
 //--Envoie une requete--//

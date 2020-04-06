@@ -119,14 +119,19 @@ void __fastcall TForm1::ValiderCourseClick(TObject *Sender)
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
 //------------------HORLOGE-----------------------//
-	time_t curr_time;
-	curr_time = time(NULL);
-	tm *tm_local = localtime(&curr_time);
+// Get current date/time, format is YYYY-MM-DD.HH:mm:ss
 
-	Memo2->Lines->Add("Heure locale :");
-	Memo2->Lines->Add(tm_local->tm_hour);
-	Memo2->Lines->Add(tm_local->tm_min);
-	Memo2->Lines->Add(tm_local->tm_sec);
+	time_t     now = time(0);
+	struct tm  tstruct;
+	char       buf[80];
+	tstruct = *localtime(&now);
+	// Visit http://en.cppreference.com/w/cpp/chrono/c/strftime
+	// for more information about date/time format
+	strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
+
+
+	Memo2->Lines->Add( "Heure locale : ");
+	Memo2->Lines->Add(buf);
 }
 //---------------------------------------------------------------------------
 
@@ -147,28 +152,35 @@ void __fastcall TForm1::NouveauDossardClick(TObject *Sender)
 void __fastcall TForm1::ButtonAssociationClick(TObject *Sender)
 {
 //----------------ASSOCIATION DE DOSSARDS---------------------//
+	//recupération du participant voulu
 	String ParticipantChoisi = ListBoxNom->Items->Strings[ListBoxNom->ItemIndex];
+	//récupération du dossard voulu
 	String NumDossard = ListBoxDossard->Items->Strings[ListBoxDossard->ItemIndex];
 
+	//requete sélection de l'ID du participant en fonction de son nom
 	String selectIdParticipant = "SELECT `IdUtilisateur` FROM `Utilisateur` WHERE `Nom` = ";
 	selectIdParticipant +="'"+ParticipantChoisi+"'";
 
 	AnsiString IdParticipantChoisi;
 	Course->ajouterDossard(NumDossard.ToInt());
 
+	//envoi de la requete select
 	SQL->Select(&resultats, &MSG_Error_Select, selectIdParticipant);
 	for (int i = 0; i < resultats.size(); i++)
 		 {
-			IdParticipantChoisi = resultats[i];
+			IdParticipantChoisi = resultats[i];//stockage de l'ID
 		 }
 
+	//requete pour changer le numero de dossard d'un participant
 	String updateNumDossard = "UPDATE `Participant` SET `IdDossard`= ";
 	updateNumDossard += "'"+NumDossard+"'";
 	updateNumDossard += "WHERE `IdUtilisateur`= ";
 	updateNumDossard +=	"'"+IdParticipantChoisi+"'";
 
+	//envoi de la Query
 	SQL->Query(&MSG_Error_Insert, updateNumDossard);
-    ButtonDemarrer->Visible=true;
+    //rendre visible le bouton de démarrage de la course à partir du moment où y'a un coureur
+	ButtonDemarrer->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -203,4 +215,5 @@ void __fastcall TForm1::ButtonDemarrerClick(TObject *Sender)
 	ButtonDemarrer->Visible=false;
 }
 //---------------------------------------------------------------------------
+
 
