@@ -1,7 +1,7 @@
 <?php
         // Connexion à la base de données 
-        $db_username = 'root';
-        $db_password = 'root';
+        $db_username = 'azerty';
+        $db_password = 'azerty';
         $db_name     = 'Projet_Cross';
         $db_host     = 'localhost';
         $db = mysqli_connect($db_host, $db_username, $db_password,$db_name)

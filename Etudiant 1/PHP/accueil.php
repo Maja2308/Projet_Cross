@@ -1,22 +1,21 @@
-    <?php
+<?php
         session_start();
-    ?>
+?>
 
 <html>
 <head>
-    <meta charset="utf-8">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <meta charset="utf-8">
+        <!-- importer le fichier de style -->
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
 
 <body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+ 
     <?php   
         if (isset($_POST['connexion'])) //Condition pour vérifier les utilisateurs 
         {
@@ -24,7 +23,7 @@
             $user2= new Bdd("","","","");
             $champLogin=$_POST["username"];
             $champMdp=$_POST["password"];              
-            $user2->Connexion_BDD("localhost","Projet_Cross","root","root");
+            $user2->Connexion_BDD("localhost","Projet_Cross","azerty","azerty");
             $_SESSION['user']=$user2->Autorisation("user",$champLogin,$champMdp);
             $_SESSION['username']=$champLogin;
             $_SESSION['password']=$champMDP;
@@ -32,8 +31,7 @@
         
         if (!isset($_SESSION['username']))
         {
-            header('Location: http://127.0.0.1/Projet_Cross/accueil.php');
-            //print("<script type=\"text/javascript\">  setTimeout('location=(\"http://192.168.65.79/accueil_connexion.php\")' ,10); </script>");
+            print("<script type=\"text/javascript\">  setTimeout('location=(\"http://127.0.0.1/Projet_Cross/index.php\")' ,10); </script>");
         }
         
     if ($_SESSION['user']==true)  //Condition si l'utilisateur est bien connecté 
@@ -241,8 +239,7 @@
         <?php
         } else 
             {
-                header('Location: http://127.0.0.1/Projet_Cross/accueil.php');
-                //print("<script type=\"text/javascript\">  setTimeout('location=(\"http://192.168.65.79/accueil_connexion.php\")' ,10); </script>");
+                print("<script type=\"text/javascript\">  setTimeout('location=(\"http://127.0.0.1/Projet_Cross/index.php\")' ,10); </script>");
             }
         ?>
 

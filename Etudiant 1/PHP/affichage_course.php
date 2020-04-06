@@ -1,45 +1,49 @@
 <html>
 <head>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+        <meta charset="utf-8">
+        <!-- importer le fichier de style -->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <title>Site du Cross La Providence</title>
 
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" rel="stylesheet" type="text/css">
+      
 </head>
 
 <body>
 
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light ">
-            <a class="navbar-brand" href="accueil.php">
-                <img src="image/logo_la_providence.jpg" alt="Logo" style="width:250px">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="slide-collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <!---------------------Menu------------------------->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark nav-masthead">
+        <div class="container">
+        <a class="navbar-brand" href="accueil.php"> <h3 class="masthead-brand mb-0"><i class="fas fa-running"></i></h3></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav ml-auto">
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="inscription_course.php">INSCRIPTION A UNE COURSE</a>
+                    <a class="nav-link p-2 font-weight-bold text-white" href="affichage_course.php">Course disponible pour inscription</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="affichage_course.php">MES COURSES</a>
+                    <a class="nav-link p-2 font-weight-bold text-white" href="accueil_course.php">Mes courses</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="creation_course.php">CREATION D'UNE COURSE</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="http://www.la-providence.net/">SITE LA PROVIDENCE</a>
+                    <a class="nav-link font-weight-bold p-2 text-white" href="creation_course.php">Creation d'une course (Temporaire)</a>
                 </li>
             </ul>
-            </div>
-        </nav>
-    </div>
-    <br>
+                <a class="nav-link text-white p-2 font-weight-bold" href="#">Déconnexion</a>
+        
+        </div>
+        </div>
+    </nav>
+    <!---------------------Fin Menu------------------------->
 
 
 </body>
