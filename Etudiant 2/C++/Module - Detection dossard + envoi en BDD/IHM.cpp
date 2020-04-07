@@ -14,7 +14,7 @@
 #define HOST "192.168.1.68"
 #define USER "msv"
 #define PASSWORD "msv"
-#define DATABASE "Projet_Cross"
+#define DATABASE "CrossLapro"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
@@ -211,9 +211,49 @@ void __fastcall TForm1::ButtonDemarrerClick(TObject *Sender)
 	NouveauDossard->Visible=false;
 	ValiderCourse->Visible=false;
 	ButtonAssociation->Visible=false;
-	ButtonDossard->Visible=false;
+	//ButtonDossard->Visible=false;
 	ButtonDemarrer->Visible=false;
+	ButtonPassage->Visible= true;
+
+	TempsDebutCourse = time(0);
+    Course->setTempsDepart(TempsDebutCourse);
 }
 //---------------------------------------------------------------------------
 
+
+void __fastcall TForm1::ButtonPassageClick(TObject *Sender)
+{
+	/* CE BOUTON SIMULE LE PASSAGE D'UN DOSSARD SOUS L'ARCHE */
+
+	//recuperation du dossard voulu
+	String NumDossard = ListBoxVector->Items->Strings[ListBoxVector->ItemIndex];
+	NumDossard = NumDossard.ToInt();
+
+	//recuperation du temps
+	int TempsTour= time(0);
+	TempsTour =  TempsTour - TempsDebutCourse ;
+	//affichage du dossard + de son temps
+	ListBoxVector->Items->Add(NumDossard+" /"+TempsTour+"sec");
+
+
+	//requête select IdParticipant avec numDossard
+	AnsiString IdParticipant;
+	String selectIdParticipant = "SELECT `IdParticipant` FROM `Participant` WHERE `IdDossard` = ";
+	selectIdParticipant +="'"+NumDossard+"'";
+	SQL->Select(&resultats, &MSG_Error_Select, selectIdParticipant);
+		for (int i = 0; i < resultats.size(); i++)
+		 {
+			IdParticipant = resultats[i];//stockage de l'ID
+		 }
+
+	NumTour = 1;//toDo
+	AnsiString MessageNull = "NULL";//message pour le insert
+
+	//requête insert temps tour pour le numero de dossard en question
+	String insertTempsTour = "INSERT INTO `ParticipantTempsTour` (`IdParticipantTempsTour`, `IdParticipant`, `IdCourse`, `numTour`, `tempsTour`) VALUES ";
+	insertTempsTour += "('"+MessageNull+"', '"+IdParticipant+"', '"+IdCourseChoisie+"', '"+NumTour+"', '"+TempsTour+"')";
+	//envoi de la requete
+	SQL->Query(&MSG_Error_Insert, insertTempsTour);
+}
+//---------------------------------------------------------------------------
 

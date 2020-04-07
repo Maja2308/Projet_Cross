@@ -42,12 +42,15 @@ __published:	// Composants gérés par l'EDI
 	TButton *ButtonDossard;
 	TListBox *ListBoxVector;
 	TButton *ButtonDemarrer;
+	TButton *ButtonPassage;
+	TButton *ButtonFin;
 	void __fastcall ValiderCourseClick(TObject *Sender);
 	void __fastcall Timer1Timer(TObject *Sender);
 	void __fastcall NouveauDossardClick(TObject *Sender);
 	void __fastcall ButtonAssociationClick(TObject *Sender);
 	void __fastcall ButtonDossardClick(TObject *Sender);
 	void __fastcall ButtonDemarrerClick(TObject *Sender);
+	void __fastcall ButtonPassageClick(TObject *Sender);
 private:	// Déclarations utilisateur
 	ClassBDD *SQL;
 	ClassCourse *Course;
@@ -58,6 +61,8 @@ private:	// Déclarations utilisateur
 	AnsiString IdCourseChoisie;
 	AnsiString NomParticipantsCourse;
 	AnsiString NbToursCourse;
+	int TempsDebutCourse;
+	int NumTour;
 
 public:		// Déclarations utilisateur
 	__fastcall TForm1(TComponent* Owner);

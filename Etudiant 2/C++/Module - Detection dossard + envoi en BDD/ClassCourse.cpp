@@ -25,6 +25,11 @@ void ClassCourse::setNbTours(int NbToursCourse)
     NbTours = NbToursCourse;
 }
 
+void ClassCourse::setTempsDepart(int TempsDepart)
+{
+    TempsDebutCourse = TempsDepart;
+}
+
 void ClassCourse::demarrerCourse(int IdCourse)
 {
 	for (int i = 0; i < NbTours; i++)

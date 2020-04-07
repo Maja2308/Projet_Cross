@@ -201,6 +201,25 @@ object Form1: TForm1
     Visible = False
     OnClick = ButtonDemarrerClick
   end
+  object ButtonPassage: TButton
+    Left = 784
+    Top = 259
+    Width = 117
+    Height = 25
+    Caption = 'Passage de ce dossard'
+    TabOrder = 12
+    Visible = False
+    OnClick = ButtonPassageClick
+  end
+  object ButtonFin: TButton
+    Left = 456
+    Top = 175
+    Width = 129
+    Height = 34
+    Caption = 'Fin de Course'
+    TabOrder = 13
+    Visible = False
+  end
   object Timer1: TTimer
     OnTimer = Timer1Timer
     Left = 808

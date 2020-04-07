@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/04/06 14:59:23.000.595,=C:\Users\Proprietaire\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
+    <Transaction>2020/04/06 14:59:23.000.627,=C:\Users\Proprietaire\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2020/04/06 14:59:38.000.951,C:\Users\Proprietaire\Documents\Embarcadero\Studio\Projets\main.cpp=C:\Users\Proprietaire\Documents\Embarcadero\Studio\Projets\Unit1.cpp</Transaction>
+    <Transaction>2020/04/06 14:59:38.000.951,C:\Users\Proprietaire\Documents\Embarcadero\Studio\Projets\main.dfm=C:\Users\Proprietaire\Documents\Embarcadero\Studio\Projets\Unit1.dfm</Transaction>
+    <Transaction>2020/04/06 14:59:38.000.951,C:\Users\Proprietaire\Documents\Embarcadero\Studio\Projets\main.h=C:\Users\Proprietaire\Documents\Embarcadero\Studio\Projets\Unit1.h</Transaction>
+    <Transaction>2020/04/06 16:44:56.000.010,D:\Projet_Cross\Projet_Cross\Etudiant 2\C++\Module de test - Gestion Chrono\Project1PCH1.h=C:\Users\Proprietaire\Documents\Embarcadero\Studio\Projets\Project1PCH1.h</Transaction>
+    <Transaction>2020/04/06 16:45:06.000.672,D:\Projet_Cross\Projet_Cross\Etudiant 2\C++\Module de test - Gestion Chrono\Project1.cbproj=C:\Users\Proprietaire\Documents\Embarcadero\Studio\Projets\Project1.cbproj</Transaction>
+    <Transaction>2020/04/06 16:45:48.000.788,D:\Projet_Cross\Projet_Cross\Etudiant 2\C++\Module de test - Gestion Chrono\main.dfm=C:\Users\Proprietaire\Documents\Embarcadero\Studio\Projets\main.dfm</Transaction>
+    <Transaction>2020/04/06 16:45:48.000.788,D:\Projet_Cross\Projet_Cross\Etudiant 2\C++\Module de test - Gestion Chrono\main.h=C:\Users\Proprietaire\Documents\Embarcadero\Studio\Projets\main.h</Transaction>
+    <Transaction>2020/04/06 16:45:48.000.788,D:\Projet_Cross\Projet_Cross\Etudiant 2\C++\Module de test - Gestion Chrono\main.cpp=C:\Users\Proprietaire\Documents\Embarcadero\Studio\Projets\main.cpp</Transaction>
+  </Transactions>
+</BorlandProject>
