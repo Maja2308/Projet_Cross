@@ -222,7 +222,7 @@ object Form1: TForm1
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer
-    Left = 808
+    Left = 824
     Top = 8
   end
 end
